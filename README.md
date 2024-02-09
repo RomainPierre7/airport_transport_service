@@ -4,8 +4,8 @@ School software engineering project on a web application for an airport transpor
 
 ## Stack
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js, Express.js
+- **Frontend**: HTML, CSS, JavaScript (React.js)
+- **Backend**: Node.js (Express.js)
 - **Database**: MySQL
 
 ## Installations
@@ -19,7 +19,10 @@ School software engineering project on a web application for an airport transpor
 
 ### Frontend
 
-**To do**
+```bash
+cd frontend
+npm install
+```
 
 ### Backend
 
@@ -42,7 +45,10 @@ source schema.sql
 
 ### Run the frontend server
 
-**To do**
+```bash
+cd frontend
+npm start
+```
 
 ### Run the backend server
 
