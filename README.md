@@ -1,6 +1,6 @@
 # Airport Transport Service
 
-School software engineering project on a web application for an airport transport services company.
+School software engineering project on a web application for an airport transport service company.
 
 ## Stack
 
