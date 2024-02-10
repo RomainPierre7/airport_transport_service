@@ -24,6 +24,8 @@ cd frontend
 npm install
 ```
 
+> **Note**: The frontend server listens on port `3000` by default. Make sure the port is available. If not, change the port in the `frontend/package.json` file.
+
 ### Backend
 
 ```bash
@@ -41,7 +43,7 @@ mysql -u root -p
 source schema.sql
 ```
 
-## Run the project
+## Running the project
 
 ### Run the frontend server
 
@@ -49,6 +51,8 @@ source schema.sql
 cd frontend
 npm start
 ```
+
+The backend server should now be running on `http://localhost:3000`. You can test it by visiting this [URL](http://localhost:3000) in your browser (if you have changed the port, replace `3000` with the new port number).
 
 ### Run the backend server
 
@@ -59,7 +63,7 @@ npm start
 
 > **Note**: If you are developing, you can use `nodemon` to automatically restart the server when changes are made. To do this, run `npm run dev` instead of `npm start`.
 
-The backend server should now be running on `http://localhost:5000`. You can test it by visiting the [URL](http://localhost:5000) in your browser. (if you have changed the port, replace `5000` with the new port number).
+The backend server should now be running on `http://localhost:5000`. You can test it by visiting this [URL](http://localhost:5000) in your browser (if you have changed the port, replace `5000` with the new port number).
 
 ### Run the database server
 
