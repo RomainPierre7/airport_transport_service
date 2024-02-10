@@ -41,7 +41,7 @@ mysql -u root -p
 source schema.sql
 ```
 
-## Running the project
+## Run the project
 
 ### Run the frontend server
 
