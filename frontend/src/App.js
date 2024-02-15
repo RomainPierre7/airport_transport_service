@@ -5,7 +5,7 @@ function App() {
   const [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
-    fetch("/api")
+    fetch("/user/all")
       .then(response => response.json())
       .then(data => {
         setBackendData(data.users);
@@ -14,19 +14,6 @@ function App() {
         console.error('Error fetching data:', error);
       });
   }, []);
-
-  const [backendData2, setBackendData2] = useState([]);
-
-  useEffect(() => {
-    fetch("/test")
-      .then(response => response.text())
-      .then(data => {
-        setBackendData2(data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);  
 
   return (
     <div>
@@ -47,8 +34,6 @@ function App() {
           </ul>
         </div>
       )}
-      <h1>Backend response (Test backend text)</h1>
-      <p>{backendData2}</p>
     </div>
   );
 }
