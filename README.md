@@ -42,7 +42,12 @@ cd database
 mysql -u root -p
 create database airport_transport_service;
 use airport_transport_service;
-source createMYSQL.sql;
+source create_MYSQL.sql;
+```
+If you want to populate the database with some sample data :
+
+```bash
+source insert_sample_data_MYSQL.sql;
 ```
 
 ## Running the project
