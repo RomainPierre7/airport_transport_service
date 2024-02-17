@@ -40,7 +40,9 @@ npm install
 ```bash
 cd database
 mysql -u root -p
-source schema.sql
+create database airport_transport_service;
+use airport_transport_service;
+source createMYSQL.sql;
 ```
 
 ## Running the project
