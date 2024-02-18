@@ -57,7 +57,7 @@ cd database
 mysql -u username -p
 create database airport_transport_service;
 use airport_transport_service;
-source create_MYSQL.sql;
+source schema.sql;
 ```
 
 #### Set up environment variables
@@ -79,7 +79,7 @@ DB_DATABASE=airport_transport_service
 If you want to populate the database with some sample data:
 
 ```bash
-source insert_sample_data_MYSQL.sql;
+source sample_data.sql;
 ```
 
 ## Running the project
