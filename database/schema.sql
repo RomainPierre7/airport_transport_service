@@ -1,7 +1,11 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 8.0                                    */
-/* Created on:     17/02/2024 16:39:21                          */
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     18/02/2024 12:58:42                          */
 /*==============================================================*/
+
+
+alter table CUSTOMERS 
+   drop foreign key FK_CUSTOMER_SPONSOR_CUSTOMER;
 
 alter table RESERVATIONS 
    drop foreign key FK_RESERVAT_RELATEDBY_STOPS;
@@ -29,6 +33,10 @@ alter table TRIPS
 
 alter table TRIPS 
    drop foreign key FK_TRIPS_ISASSIGNE_VEHICLES;
+
+
+alter table CUSTOMERS 
+   drop foreign key FK_CUSTOMER_SPONSOR_CUSTOMER;
 
 drop table if exists CUSTOMERS;
 
@@ -83,6 +91,7 @@ drop table if exists VEHICLES;
 create table CUSTOMERS
 (
    CUSTOMERID           int not null auto_increment  comment '',
+   SPONSOREDBYCUSTOMERID int  comment '',
    CUSTOMERLOGIN        varchar(20)  comment '',
    CUSTOMERPASSWORD     varchar(20)  comment '',
    CUSTOMERNAME         varchar(50)  comment '',
@@ -115,8 +124,6 @@ create table ROUTES
    ROUTEID              int not null auto_increment  comment '',
    ROUTENUMBER          int  comment '',
    ROUTECOLOR           varchar(15)  comment '',
-   ROUTEMAINSTARTSTOP   varchar(50)  comment '',
-   ROUTEMAINENDSTOP     varchar(50)  comment '',
    primary key (ROUTEID),
    key AK_ROUTESNUMBERUNIQUE (ROUTENUMBER)
 );
@@ -140,6 +147,9 @@ create table STOPS
 (
    STOPID               int not null auto_increment  comment '',
    STOPNAME             varchar(50)  comment '',
+   STOPLOCATION         varchar(50)  comment '',
+   STOPLATITUDE         decimal(9,6)  comment '',
+   STOPLONGITUDE        decimal(9,6)  comment '',
    PRMACCESS            bool  comment '',
    primary key (STOPID)
 );
@@ -151,7 +161,9 @@ create table TOHAVE
 (
    STOPID               int not null  comment '',
    ROUTEID              int not null  comment '',
-   primary key (STOPID, ROUTEID)
+   STOPORDER            int  comment '',
+   primary key (STOPID, ROUTEID),
+   key AK_ROUTEIDSTOPIDSTOPORDERUNIQUE (STOPID, ROUTEID, STOPORDER)
 );
 
 /*==============================================================*/
@@ -163,8 +175,6 @@ create table TRIPS
    ROUTEID              int  comment '',
    VEHICLEID            int  comment '',
    TRIPMAINDIRECTION    bool  comment '',
-   TRIPDEPARTURETIME    datetime  comment '',
-   TRIPARRIVALTIME      datetime  comment '',
    primary key (TRIPID)
 );
 
@@ -183,6 +193,8 @@ create table VEHICLES
    key AK_VEHICLESLICENSEUNIQUE (VEHICLELICENSE)
 );
 
+alter table CUSTOMERS add constraint FK_CUSTOMER_SPONSOR_CUSTOMER foreign key (SPONSOREDBYCUSTOMERID)
+      references CUSTOMERS (CUSTOMERID) on delete restrict on update restrict;
 
 alter table RESERVATIONS add constraint FK_RESERVAT_RELATEDBY_STOPS foreign key (STOPID)
       references STOPS (STOPID) on delete restrict on update restrict;
