@@ -16,11 +16,11 @@ alter table RESERVATIONS
 alter table RESERVATIONS 
    drop foreign key FK_RESERVAT_TORESERVE_CUSTOMER;
 
-alter table SCHEDULE 
-   drop foreign key FK_SCHEDULE_BEPLANNED_STOPS;
+alter table SCHEDULES 
+   drop foreign key FK_SCHEDULES_BEPLANNED_STOPS;
 
-alter table SCHEDULE 
-   drop foreign key FK_SCHEDULE_REFERTO_TRIPS;
+alter table SCHEDULES 
+   drop foreign key FK_SCHEDULES_REFERTO_TRIPS;
 
 alter table TOHAVE 
    drop foreign key FK_TOHAVE_TOHAVE_STOPS;
@@ -55,13 +55,13 @@ drop table if exists RESERVATIONS;
 drop table if exists ROUTES;
 
 
-alter table SCHEDULE 
-   drop foreign key FK_SCHEDULE_REFERTO_TRIPS;
+alter table SCHEDULES 
+   drop foreign key FK_SCHEDULES_REFERTO_TRIPS;
 
-alter table SCHEDULE 
-   drop foreign key FK_SCHEDULE_BEPLANNED_STOPS;
+alter table SCHEDULES 
+   drop foreign key FK_SCHEDULES_BEPLANNED_STOPS;
 
-drop table if exists SCHEDULE;
+drop table if exists SCHEDULES;
 
 drop table if exists STOPS;
 
@@ -129,9 +129,9 @@ create table ROUTES
 );
 
 /*==============================================================*/
-/* Table: SCHEDULE                                              */
+/* Table: SCHEDULES                                              */
 /*==============================================================*/
-create table SCHEDULE
+create table SCHEDULES
 (
    SCHEDULEID           int not null auto_increment  comment '',
    TRIPID               int  comment '',
@@ -205,10 +205,10 @@ alter table RESERVATIONS add constraint FK_RESERVAT_RELATEDBY_TRIPS foreign key 
 alter table RESERVATIONS add constraint FK_RESERVAT_TORESERVE_CUSTOMER foreign key (CUSTOMERID)
       references CUSTOMERS (CUSTOMERID) on delete restrict on update restrict;
 
-alter table SCHEDULE add constraint FK_SCHEDULE_BEPLANNED_STOPS foreign key (STOPID)
+alter table SCHEDULES add constraint FK_SCHEDULES_BEPLANNED_STOPS foreign key (STOPID)
       references STOPS (STOPID) on delete restrict on update restrict;
 
-alter table SCHEDULE add constraint FK_SCHEDULE_REFERTO_TRIPS foreign key (TRIPID)
+alter table SCHEDULES add constraint FK_SCHEDULES_REFERTO_TRIPS foreign key (TRIPID)
       references TRIPS (TRIPID) on delete restrict on update restrict;
 
 alter table TOHAVE add constraint FK_TOHAVE_TOHAVE_STOPS foreign key (STOPID)

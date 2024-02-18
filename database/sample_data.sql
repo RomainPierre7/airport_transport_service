@@ -4,14 +4,14 @@
 /*==============================================================*/
 
 /* Tables:
-| CUSTOMERS   OK
+| CUSTOMERS   
+| ROUTES      
+| STOPS       
+| TOHAVE      
+| VEHICLES  
+| TRIPS       
+| SCHEDULES       
 | RESERVATIONS
-| ROUTES      OK
-| SCHEDULE    
-| STOPS       OK
-| TOHAVE      OK
-| TRIPS       NOK
-| VEHICLES  OK
 */
 
 -- Remove all existing data
@@ -21,11 +21,20 @@ SET foreign_key_checks = 0;
 DELETE FROM CUSTOMERS;
 DELETE FROM RESERVATIONS;
 DELETE FROM ROUTES;
-DELETE FROM SCHEDULE;
+DELETE FROM SCHEDULES;
 DELETE FROM STOPS;
 DELETE FROM TOHAVE;
 DELETE FROM TRIPS;
 DELETE FROM VEHICLES;
+
+ALTER TABLE CUSTOMERS AUTO_INCREMENT = 1;
+ALTER TABLE RESERVATIONS AUTO_INCREMENT = 1;
+ALTER TABLE ROUTES AUTO_INCREMENT = 1;
+ALTER TABLE SCHEDULES AUTO_INCREMENT = 1;
+ALTER TABLE STOPS AUTO_INCREMENT = 1;
+ALTER TABLE TOHAVE AUTO_INCREMENT = 1;
+ALTER TABLE TRIPS AUTO_INCREMENT = 1;
+ALTER TABLE VEHICLES AUTO_INCREMENT = 1;
 
 SET foreign_key_checks = 1;
 
@@ -82,42 +91,131 @@ VALUES
 
 -- Insert data into the TRIPS table
 
-INSERT INTO TRIPS (TRIPID, ROUTEID, VEHICLEID, TRIPMAINDIRECTION)
-VALUES 
-(1, 1, 1, 1),
-(2, 1, 2, 0),
-(3, 2, 3, 1),
-(4, 2, 4, 0),
-(5, 3, 5, 1),
-(6, 3, 6, 0); 
+DELIMITER //
 
--- Insert data into the SCHEDULE table
+DROP PROCEDURE IF EXISTS InsertTripsSampleData;
 
-INSERT INTO SCHEDULE (SCHEDULEID, TRIPID, STOPID, SCHEDULETIME)
-VALUES
-(1, 1, 6, '2024-02-18 08:00:00'),
-(2, 1, 5, '2024-02-18 08:10:00'),
-(3, 1, 1, '2024-02-18 08:20:00'),
-(4, 2, 1, '2024-02-18 09:00:00'),
-(5, 2, 5, '2024-02-18 09:10:00'),
-(6, 2, 6, '2024-02-18 09:20:00'),
-(7, 3, 6, '2024-02-18 10:00:00'),
-(8, 3, 5, '2024-02-18 10:10:00'),
-(9, 3, 1, '2024-02-18 10:20:00'),
-(10, 4, 1, '2024-02-18 11:00:00'),
-(11, 4, 5, '2024-02-18 11:10:00'),
-(12, 4, 6, '2024-02-18 11:20:00'),
-(13, 5, 6, '2024-02-18 12:00:00'),
-(14, 5, 5, '2024-02-18 12:10:00'),
-(15, 5, 1, '2024-02-18 12:20:00'),
-(16, 6, 1, '2024-02-18 13:00:00'),
-(17, 6, 5, '2024-02-18 13:10:00'),
-(18, 6, 6, '2024-02-18 13:20:00');
+CREATE PROCEDURE InsertTripsSampleData()
+BEGIN
+    DECLARE trip_id1 INT DEFAULT 1;
+    DECLARE trip_id2 INT DEFAULT 2;
+    DECLARE trip_id3 INT DEFAULT 3;
+    DECLARE trip_id4 INT DEFAULT 4;
+    DECLARE trip_id5 INT DEFAULT 5;
+    DECLARE trip_id6 INT DEFAULT 6;
 
-/* -- Insert data into the RESERVATIONS table
+    DECLARE i INT DEFAULT 0;
+
+    WHILE i < 4380 DO
+        INSERT INTO TRIPS (TRIPID, ROUTEID, VEHICLEID, TRIPMAINDIRECTION)
+        VALUES
+        (trip_id1, 1, 1, 1),
+        (trip_id2, 1, 2, 0),
+        (trip_id3, 2, 3, 1),
+        (trip_id4, 2, 4, 0),
+        (trip_id5, 3, 5, 1),
+        (trip_id6, 3, 6, 0); 
+        
+        SET trip_id1 = trip_id1 + 6;
+        SET trip_id2 = trip_id2 + 6;
+        SET trip_id3 = trip_id3 + 6;
+        SET trip_id4 = trip_id4 + 6;
+        SET trip_id5 = trip_id5 + 6;
+        SET trip_id6 = trip_id6 + 6;
+
+        SET i = i + 1;
+    END WHILE;
+END //
+
+DELIMITER ;
+
+CALL InsertTripsSampleData();
+
+-- Insert data into the SCHEDULES table
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS InsertSchedulesSampleData;
+
+CREATE PROCEDURE InsertSchedulesSampleData()
+BEGIN
+    DECLARE i INT DEFAULT 0;
+    DECLARE j INT DEFAULT 0;
+
+    DECLARE trip_id1 INT DEFAULT 1;
+    DECLARE trip_id2 INT DEFAULT 2;
+    DECLARE trip_id3 INT DEFAULT 3;
+    DECLARE trip_id4 INT DEFAULT 4;
+    DECLARE trip_id5 INT DEFAULT 5;
+    DECLARE trip_id6 INT DEFAULT 6;
+
+    DECLARE day_trip DATE DEFAULT CURDATE();
+
+    DECLARE time_trip1 TIME DEFAULT '08:00:00';
+    DECLARE time_trip2 TIME DEFAULT '08:00:00';
+    DECLARE time_trip3 TIME DEFAULT '09:00:00';
+    DECLARE time_trip4 TIME DEFAULT '09:00:00';
+    DECLARE time_trip5 TIME DEFAULT '10:00:00';
+    DECLARE time_trip6 TIME DEFAULT '10:00:00';
+        
+    WHILE i < 365 DO
+        WHILE j < 12 DO
+
+            INSERT INTO SCHEDULES (TRIPID, STOPID, SCHEDULETIME)
+            VALUES
+            (trip_id1, 6, CONCAT(day_trip, ' ', time_trip1)),
+            (trip_id1, 5, CONCAT(day_trip, ' ', ADDTIME(time_trip1, '00:10:00'))),
+            (trip_id1, 1, CONCAT(day_trip, ' ', ADDTIME(time_trip1, '00:30:00'))),
+            (trip_id2, 1, CONCAT(day_trip, ' ', time_trip2)),
+            (trip_id2, 5, CONCAT(day_trip, ' ', ADDTIME(time_trip2, '00:20:00'))),
+            (trip_id2, 6, CONCAT(day_trip, ' ', ADDTIME(time_trip2, '00:30:00'))),
+            (trip_id3, 4, CONCAT(day_trip, ' ', time_trip3)),
+            (trip_id3, 1, CONCAT(day_trip, ' ', ADDTIME(time_trip3, '00:15:00'))),
+            (trip_id4, 1, CONCAT(day_trip, ' ', time_trip4)),
+            (trip_id4, 4, CONCAT(day_trip, ' ', ADDTIME(time_trip4, '00:15:00'))),
+            (trip_id5, 3, CONCAT(day_trip, ' ', time_trip5)),
+            (trip_id5, 2, CONCAT(day_trip, ' ', ADDTIME(time_trip5, '00:05:00'))),
+            (trip_id5, 1, CONCAT(day_trip, ' ', ADDTIME(time_trip5, '00:20:00'))),
+            (trip_id6, 1, CONCAT(day_trip, ' ', time_trip6)),
+            (trip_id6, 2, CONCAT(day_trip, ' ', ADDTIME(time_trip6, '00:15:00'))),
+            (trip_id6, 3, CONCAT(day_trip, ' ', ADDTIME(time_trip6, '00:20:00')));
+
+            SET time_trip1 = ADDTIME(time_trip1, '01:00:00');
+            SET time_trip2 = ADDTIME(time_trip2, '01:00:00');
+            SET time_trip3 = ADDTIME(time_trip3, '01:00:00');
+            SET time_trip4 = ADDTIME(time_trip4, '01:00:00');
+            SET time_trip5 = ADDTIME(time_trip5, '01:00:00');
+            SET time_trip6 = ADDTIME(time_trip6, '01:00:00');
+
+            SET trip_id1 = trip_id1 + 6;
+            SET trip_id2 = trip_id2 + 6;
+            SET trip_id3 = trip_id3 + 6;
+            SET trip_id4 = trip_id4 + 6;
+            SET trip_id5 = trip_id5 + 6;
+            SET trip_id6 = trip_id6 + 6;
+
+            SET j = j + 1;
+        END WHILE;
+        SET j = 0;
+        SET i = i + 1;
+        SET day_trip = DATE_ADD(day_trip, INTERVAL 1 DAY);
+        SET time_trip1 = '08:00:00';
+        SET time_trip2 = '08:00:00';
+        SET time_trip3 = '09:00:00';
+        SET time_trip4 = '09:00:00';
+        SET time_trip5 = '10:00:00';
+        SET time_trip6 = '10:00:00';
+    END WHILE;
+END //
+
+DELIMITER ;
+
+CALL InsertSchedulesSampleData();
+
+-- Insert data into the RESERVATIONS table
 
 INSERT INTO RESERVATIONS (RESERVATIONID, CUSTOMERID, STOPID, TRIPID, RESERVATIONTIME, RESERVATIONPRICE, SALETIME)
 VALUES 
-(1, 1, 1, 1, '2024-02-17 16:39:21', 10.00, '2024-02-17 16:39:21'),
-(2, 2, 2, 2, '2024-02-17 16:39:21', 10.00, '2024-02-17 16:39:21'),
-(3, 3, 3, 3, '2024-02-17 16:39:21', 10.00, '2024-02-17 16:39:21'); */
+(1, 1, 6, 1, CONCAT(DATE_ADD(CURDATE(), INTERVAL 30 DAY), ' 08:00:00'), 7.50, CONCAT(CURDATE(), ' 08:00:00')),
+(2, 2, 4, 3, CONCAT(DATE_ADD(CURDATE(), INTERVAL 25 DAY), ' 09:00:00'), 5.50, CONCAT(CURDATE(), ' 09:00:00')),
+(3, 3, 3, 5, CONCAT(DATE_ADD(CURDATE(), INTERVAL 60 DAY), ' 10:00:00'), 6.50, CONCAT(CURDATE(), ' 10:00:00'));
