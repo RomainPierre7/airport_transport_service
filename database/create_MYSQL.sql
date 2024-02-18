@@ -1,14 +1,7 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
+/* DBMS name:      MySQL 8.0                                    */
 /* Created on:     17/02/2024 16:39:21                          */
 /*==============================================================*/
-
-
-alter table CUSTOMERS 
-   drop foreign key FK_CUSTOMER_SPONSOR_CUSTOMER;
-
-alter table CUSTOMERS 
-   drop foreign key FK_CUSTOMER_SPONSOR2_CUSTOMER;
 
 alter table RESERVATIONS 
    drop foreign key FK_RESERVAT_RELATEDBY_STOPS;
@@ -36,13 +29,6 @@ alter table TRIPS
 
 alter table TRIPS 
    drop foreign key FK_TRIPS_ISASSIGNE_VEHICLES;
-
-
-alter table CUSTOMERS 
-   drop foreign key FK_CUSTOMER_SPONSOR2_CUSTOMER;
-
-alter table CUSTOMERS 
-   drop foreign key FK_CUSTOMER_SPONSOR_CUSTOMER;
 
 drop table if exists CUSTOMERS;
 
@@ -97,8 +83,6 @@ drop table if exists VEHICLES;
 create table CUSTOMERS
 (
    CUSTOMERID           int not null auto_increment  comment '',
-   SPONSOREDCUSTOMERID  int  comment '',
-   SPONSOREDBYCUSTOMERID int  comment '',
    CUSTOMERLOGIN        varchar(20)  comment '',
    CUSTOMERPASSWORD     varchar(20)  comment '',
    CUSTOMERNAME         varchar(50)  comment '',
@@ -199,11 +183,6 @@ create table VEHICLES
    key AK_VEHICLESLICENSEUNIQUE (VEHICLELICENSE)
 );
 
-alter table CUSTOMERS add constraint FK_CUSTOMER_SPONSOR_CUSTOMER foreign key (SPONSOREDBYCUSTOMERID)
-      references CUSTOMERS (CUSTOMERID) on delete restrict on update restrict;
-
-alter table CUSTOMERS add constraint FK_CUSTOMER_SPONSOR2_CUSTOMER foreign key (SPONSOREDCUSTOMERID)
-      references CUSTOMERS (CUSTOMERID) on delete restrict on update restrict;
 
 alter table RESERVATIONS add constraint FK_RESERVAT_RELATEDBY_STOPS foreign key (STOPID)
       references STOPS (STOPID) on delete restrict on update restrict;
