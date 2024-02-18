@@ -8,7 +8,7 @@ function App() {
     fetch("/user/all")
       .then(response => response.json())
       .then(data => {
-        setBackendData(data.users);
+        setBackendData(data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -16,25 +16,28 @@ function App() {
   }, []);
 
   return (
+<div>
+  {backendData && backendData.length === 0 ? (
+    <p>Loading...</p>
+  ) : (
     <div>
-      {backendData.length === 0 ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h1>Users with Bus Numbers (Test backend Json)</h1>
-          <ul>
-            {backendData.map((user, i) => (
-              <li key={i}>
-                <p>Name: {user.name}</p>
-                <p>Bus Number: {user.bus_number}</p>
-                <p>Date: {user.date}</p>
-                <p>Time: {user.time}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <h1>All user details:</h1>
+      <ul>
+        {backendData && backendData.map((user, i) => (
+          <li key={i}>
+            <p>ID: {user.CUSTOMERID}</p>
+            <p>Name: {user.CUSTOMERNAME} {user.CUSTOMERSURNAME}</p>
+            <p>Login: {user.CUSTOMERLOGIN}</p>
+            <p>Password: {user.CUSTOMERPASSWORD}</p>
+            <p>Birthdate: {user.CUSTOMERBIRTHDATE}</p>
+          </li>
+        ))}
+      </ul>
     </div>
+  )}
+</div>
+
+
   );
 }
 
