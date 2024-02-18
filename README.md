@@ -60,6 +60,14 @@ use airport_transport_service;
 source schema.sql;
 ```
 
+##### Populate the database with sample data (optional)
+
+If you want to populate the database with some sample data:
+
+```bash
+source sample_data.sql;
+```
+
 #### Set up environment variables
 
 Create a .env file in the `backend` directory and add the following
@@ -72,14 +80,6 @@ DB_PORT=3306
 DB_USER=username
 DB_PASSWORD=password
 DB_DATABASE=airport_transport_service
-```
-
-##### Populate the database with sample data (optional)
-
-If you want to populate the database with some sample data:
-
-```bash
-source sample_data.sql;
 ```
 
 ## Running the project
