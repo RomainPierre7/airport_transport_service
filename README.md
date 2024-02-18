@@ -70,7 +70,7 @@ source sample_data.sql;
 
 #### Set up environment variables
 
-Create a .env file in the `backend` directory and add the following
+Create a .env file in the `backend` directory and add the following code:
 
 > **Note**: Replace `username` with the username you created and `password` with the password you created.
 
