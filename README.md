@@ -37,14 +37,46 @@ npm install
 
 ### Database
 
+#### Create a new user
+
+> **Note**: Replace `username` with the username you want to create and `password` with the password you want to use.
+
+```bash
+mysql -u root -p
+CREATE USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
+exit
+```
+
+#### Create the database and tables
+
+> **Note**: Replace `username` with the username you created and `password` with the password you created.
+
 ```bash
 cd database
-mysql -u root -p
+mysql -u username -p
 create database airport_transport_service;
 use airport_transport_service;
 source create_MYSQL.sql;
 ```
-If you want to populate the database with some sample data :
+
+#### Set up environment variables
+
+Create a .env file in the `backend` directory and add the following
+
+> **Note**: Replace `username` with the username you created and `password` with the password you created.
+
+```bash
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=username
+DB_PASSWORD=password
+DB_DATABASE=airport_transport_service
+```
+
+##### Populate the database with sample data (optional)
+
+If you want to populate the database with some sample data:
 
 ```bash
 source insert_sample_data_MYSQL.sql;
