@@ -5,7 +5,7 @@ function App() {
   const [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
-    fetch("/user/all")
+    fetch("/busNetwork/stops/routes/1")
       .then(response => response.json())
       .then(data => {
         setBackendData(data);
@@ -21,23 +21,22 @@ function App() {
     <p>Loading...</p>
   ) : (
     <div>
-      <h1>All user details:</h1>
+      <h1>All route 1 stops:</h1>
       <ul>
-        {backendData && backendData.map((user, i) => (
+        {backendData && backendData.map((stop, i) => (
           <li key={i}>
-            <p>ID: {user.CUSTOMERID}</p>
-            <p>Name: {user.CUSTOMERNAME} {user.CUSTOMERSURNAME}</p>
-            <p>Login: {user.CUSTOMERLOGIN}</p>
-            <p>Password: {user.CUSTOMERPASSWORD}</p>
-            <p>Birthdate: {user.CUSTOMERBIRTHDATE}</p>
+            <p>ID: {stop.STOPID}</p>
+            <p>Name: {stop.STOPNAME}</p>
+            <p>Location: {stop.STOPLOCATION}</p>
+            <p>Latitude: {stop.STOPLATITUDE}</p>
+            <p>Longitude: {stop.STOPLONGITUDE}</p>
+            <p>PRM access: {stop.PRMACCESS}</p>
           </li>
         ))}
       </ul>
     </div>
   )}
 </div>
-
-
   );
 }
 
