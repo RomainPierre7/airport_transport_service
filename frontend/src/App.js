@@ -1,88 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './assets/App.css';
+import IsAuthenticated from './utils/IsAuthenticated';
+import LoginPage from './pages/LoginPage';
+import RouteDetails from './components/RouteDetails';
 
 function App() {
-  const [backendData, setBackendData] = useState([]);
-  const [loginData, setLoginData] = useState({ login: '', password: '' });
+  const isLoggedIn = IsAuthenticated();
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    fetch("/busNetwork/stops/routes/1")
-      .then(response => response.json())
-      .then(data => {
-        setBackendData(data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  
-    const formData = {
-      login: loginData.login,
-      password: loginData.password
-    };
-  
-    fetch('/customer/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      if (response.ok) {
-        console.log('Connection successful');
-        window.location.reload();
-      } else {
-        console.error('Error during login');
-      }
-    })
-    .catch(error => {
-      console.error('Error during login:', error);
-    });
-  }
-  
+    if (isLoggedIn) {
+      fetch(`/customer/informations`)
+        .then(response => response.json())
+        .then(data => {
+          setUserInfo(data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  }, [isLoggedIn]);
 
   return (
     <div>
-      <h2>Log in</h2>
-      <form onSubmit={handleSubmit}>
+      {!isLoggedIn && <LoginPage />}
+
+      {isLoggedIn && userInfo && userInfo.length > 0 && (
         <div>
-          <input type="text" id="login" name="login" placeholder="Login" value={loginData.login} onChange={handleInputChange} required />
-        </div>
-        <div>
-          <input type="password" id="password" name="password" placeholder="Password" value={loginData.password} onChange={handleInputChange} required />
-        </div>
-        <div>
-          <button type="submit">Log in</button>
-        </div>
-      </form>
-      {backendData && backendData.length === 0 ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h1>All route 1 stops:</h1>
-          <ul>
-            {backendData && backendData.map((stop, i) => (
-              <li key={i}>
-                <p>ID: {stop.STOPID}</p>
-                <p>Name: {stop.STOPNAME}</p>
-                <p>Location: {stop.STOPLOCATION}</p>
-                <p>Latitude: {stop.STOPLATITUDE}</p>
-                <p>Longitude: {stop.STOPLONGITUDE}</p>
-                <p>PRM access: {stop.PRMACCESS}</p>
-              </li>
-            ))}
-          </ul>
+          <h1>Welcome {userInfo[0].CUSTOMERNAME} {userInfo[0].CUSTOMERSURNAME}</h1>
         </div>
       )}
+      <RouteDetails id={1} />
+      <RouteDetails id={2} />
+      <RouteDetails id={3} />
     </div>
   );
 }
