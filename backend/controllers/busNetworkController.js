@@ -13,7 +13,6 @@ exports.getAllRoutes = asyncHandler(async (req, res, next) => {
 
 exports.getRouteByID = asyncHandler(async (req, res, next) => {
     const routeID = req.params.routeID;
-    console.log(routeID);
     db.query('SELECT * FROM ROUTES WHERE ROUTEID = ?', [routeID], (err, rows) => {
         if (err) {
             console.error('Error executing query', err.stack);

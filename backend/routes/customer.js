@@ -5,7 +5,8 @@ const jwtAuth = require("../middlewares/jwtAuth");
 
 const customerController = require("../controllers/customerController");
 
-router.get("/information", jwtAuth.verify, customerController.getCustomerInformation); 
+router.get("/isLoggedIn", jwtAuth.verify, customerController.isLoggedIn);
+router.get("/informations", jwtAuth.verify, customerController.getCustomerInformations);
 
 router.post("/register", customerController.register);
 router.post("/login", customerController.login);
