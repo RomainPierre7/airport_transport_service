@@ -80,6 +80,7 @@ DB_PORT=3306
 DB_USER=username
 DB_PASSWORD=password
 DB_DATABASE=airport_transport_service
+JWT_SECRET=secret
 ```
 
 ## Running the project
