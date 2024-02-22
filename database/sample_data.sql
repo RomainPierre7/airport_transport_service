@@ -15,7 +15,7 @@
 */
 
 -- Remove all existing data
-
+SET SQL_SAFE_UPDATES = 0;
 SET foreign_key_checks = 0;
 
 DELETE FROM CUSTOMERS;
@@ -37,6 +37,7 @@ ALTER TABLE TRIPS AUTO_INCREMENT = 1;
 ALTER TABLE VEHICLES AUTO_INCREMENT = 1;
 
 SET foreign_key_checks = 1;
+SET SQL_SAFE_UPDATES = 1;
 
 -- Insert data into the CUSTOMERS table
 
