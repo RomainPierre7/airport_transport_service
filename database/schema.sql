@@ -93,7 +93,7 @@ create table CUSTOMERS
    CUSTOMERID           int not null auto_increment  comment '',
    SPONSOREDBYCUSTOMERID int  comment '',
    CUSTOMERLOGIN        varchar(20)  comment '',
-   CUSTOMERPASSWORD     varchar(20)  comment '',
+   CUSTOMERPASSWORD     varchar(100)  comment '',
    CUSTOMERNAME         varchar(50)  comment '',
    CUSTOMERSURNAME      varchar(50)  comment '',
    CUSTOMERBIRTHDATE    date  comment '',

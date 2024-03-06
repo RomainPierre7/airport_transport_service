@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const db = require('../databaseConnection');
+const cryptoUtils = require('../utils/cryptoUtils');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ exports.getCustomerInformations = asyncHandler(async (req, res, next) => {
 
 exports.register = asyncHandler(async (req, res, next) => {
     const { login, password, name, surname, birthdate } = req.body;
+
     db.query('INSERT INTO CUSTOMERS (CUSTOMERLOGIN, CUSTOMERPASSWORD, CUSTOMERNAME, CUSTOMERSURNAME, CUSTOMERBIRTHDATE) VALUES (?, ?, ?, ?, ?)',
         [login, password, name, surname, birthdate], (err, rows) => {
             if (err) {
@@ -41,8 +43,14 @@ exports.login = asyncHandler(async (req, res, next) => {
             console.error('Error executing query', err.stack);
             return res.status(500).send('Error executing query');
         }
-        if (rows.length === 0 || rows[0].CUSTOMERPASSWORD !== password) {
-            return res.status(401).send('Invalid login or password');
+        if (rows.length === 0) {
+            return res.status(401).send('Invalid login');
+        }
+        const hashedPassword = rows[0].CUSTOMERPASSWORD;
+        const salt = hashedPassword.substring(0, 32);
+        const hashedKey = hashedPassword.substring(32);
+        if (!cryptoUtils.validatePassword(password, salt, hashedKey)) {
+            return res.status(401).send('Invalid password');
         }
         const token = jwt.sign({ login }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true });
