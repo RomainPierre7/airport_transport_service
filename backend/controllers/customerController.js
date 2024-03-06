@@ -24,17 +24,28 @@ exports.getCustomerInformations = asyncHandler(async (req, res, next) => {
 
 exports.register = asyncHandler(async (req, res, next) => {
     const { login, password, name, surname, birthdate } = req.body;
-
-    db.query('INSERT INTO CUSTOMERS (CUSTOMERLOGIN, CUSTOMERPASSWORD, CUSTOMERNAME, CUSTOMERSURNAME, CUSTOMERBIRTHDATE) VALUES (?, ?, ?, ?, ?)',
-        [login, password, name, surname, birthdate], (err, rows) => {
-            if (err) {
-                console.error('Error executing query', err.stack);
-                return res.status(500).send('Error executing query');
-            }
-            res.json(rows);
+    db.query('SELECT CUSTOMERID FROM CUSTOMERS WHERE CUSTOMERLOGIN = ?', [login], (err, rows) => {
+        if (err) {
+            console.error('Error executing query', err.stack);
+            return res.status(500).send('Error executing query');
         }
-    );
+        if (rows.length > 0) {
+            return res.status(400).send('Login already taken');
+        }
+        const { hashedKey, salt } = cryptoUtils.generateEncryptedPassword(password);
+        const passwordToSave = salt + hashedKey;
+        db.query('INSERT INTO CUSTOMERS (CUSTOMERLOGIN, CUSTOMERPASSWORD, CUSTOMERNAME, CUSTOMERSURNAME, CUSTOMERBIRTHDATE) VALUES (?, ?, ?, ?, ?)',
+            [login, passwordToSave, name, surname, birthdate], (err, rows) => {
+                if (err) {
+                    console.error('Error executing query', err.stack);
+                    return res.status(500).send('Error executing query');
+                }
+                res.json(rows);
+            }
+        );
+    });
 });
+
 
 exports.login = asyncHandler(async (req, res, next) => {
     const { login, password } = req.body;
