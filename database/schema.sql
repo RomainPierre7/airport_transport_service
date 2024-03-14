@@ -112,7 +112,6 @@ create table RESERVATIONS
    TRIPID               int  comment '',
    RESERVATIONTIME      datetime  comment '',
    RESERVATIONPRICE     numeric(5,2)  comment '',
-   SALETIME             datetime  comment '',
    primary key (RESERVATIONID)
 );
 

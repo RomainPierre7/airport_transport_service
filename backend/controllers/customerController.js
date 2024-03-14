@@ -69,3 +69,15 @@ exports.login = asyncHandler(async (req, res, next) => {
     }
     );
 });
+
+exports.deleteAccount = asyncHandler(async (req, res, next) => {
+    const login = req.user.login;
+    db.query('DELETE FROM CUSTOMERS WHERE CUSTOMERLOGIN = ?', [login], (err, rows) => {
+        if (err) {
+            console.error('Error executing query', err.stack);
+            return res.status(500).send('Error executing query');
+        }
+        res.status(200).send('Account deleted');
+    }
+    );
+});

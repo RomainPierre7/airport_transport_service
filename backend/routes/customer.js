@@ -11,4 +11,6 @@ router.get("/informations", jwtAuth.verify, customerController.getCustomerInform
 router.post("/register", customerController.register);
 router.post("/login", customerController.login);
 
+router.delete("/delete", jwtAuth.verify, customerController.deleteAccount);
+
 module.exports = router;
