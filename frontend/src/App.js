@@ -6,7 +6,7 @@ import RouteDetails from './components/RouteDetails';
 import AirportNavbar from './components/AirportNavabar.js';
 import HomeOne from './components/HomeOne.js';
 import HomeTwo from './components/HomeTwo.js';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
