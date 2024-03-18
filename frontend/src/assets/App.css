@@ -2,11 +2,143 @@
   /* Latvian flag red */
   --primary-color: #BF1932;
   --secondary-color: #fff;
-  --tertiary-color: #333;
+  --tertiary-color: #000333;
 }
 
-body {
+.Anav {
   background-color: var(--primary-color);
-  color: var(--secondary-color);
-  font-family: 'Roboto', sans-serif;
+  padding: 1% 5%;
+  color: white;
 }
+
+.navbar-brand {
+  font-family: "Roboto Slab", serif;;
+}
+
+.navbar-brand img {
+  height: 60px;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  padding: 20px 55px;
+}
+
+.navbar div li a {
+  color: white;
+  margin: 0 20px;
+}
+
+.HomeOne {
+  background-color: var(--primary-color);
+  height: 100vh;
+  display: flex;
+  padding: 2% 5%;
+}
+
+.OneLeft {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  padding-top: 50px;
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  align-items: center;
+  color: white;
+}
+
+.OneLeft h2 {
+  font-size: 4rem;
+  color: var(--tertiary-color);
+}
+
+.OneLeft p {
+  width: 60%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  margin: 50px auto;
+}
+
+.OneLeft button {
+  background-color: white;
+  color: var(--tertiary-color);
+  border: none;
+  padding: 1% 2%;
+  border-radius: 20px;
+}
+.OneLeft button:hover {
+  background-color: var(--tertiary-color);
+  color: white;
+  transition: 1s;
+  border: none;
+  padding: 1% 2%;
+  border-radius: 20px;
+}
+
+.OneLeft h5 {
+  text-align: left;
+  padding: 40px 20px;
+  color: var(--tertiary-color);
+}
+
+.partnerImg {
+  height: 60px;
+  margin: -30px 0 0 -50px;
+}
+
+.OneLeft button img {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.OneRight {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.OneRight img {
+  width: 470px;
+  border-radius: 50%;
+  margin-top: -100px;
+  margin-left: 50px;
+}
+
+.HomeTwo {
+  background-color: var(--secondary-color);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2% 5%;
+  align-items: center;
+}
+
+.Block1 {
+  background-color: var(--tertiary-color);
+  width: 27%;
+  height: 40%;
+  border-radius: 30px;
+  margin: 0 20px;
+}
+
+.Block2 {
+  background-color: #F4F4F4;
+  width: 27%;
+  height: 40%;
+  border-radius: 30px;
+  margin: 0 20px;
+}
+
+.HomeTwo img {
+  width: 65px;
+  margin: 20px 0;
+  background-color: white;
+  border-radius: 50%;
+
+}
+
