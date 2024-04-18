@@ -9,6 +9,7 @@ import HomeTwo from './components/HomeTwo.js';
 import HomeThree from './components/HomeThree.js';
 import HomeFour from './components/HomeFour.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
