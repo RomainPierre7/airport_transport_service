@@ -5,23 +5,21 @@ import Logo from '../assets/images/SkyRideLogo.png';
 function Navbar() {
   return (
     <div className='Anav'>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/App.js"><img src={Logo} alt="Logo" />SkyRide</a>
-          <ul class="navbar-nav mb-5 mb-lg-0 m-flex">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">About</a>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/"><img src={Logo} alt="Logo" />SkyRide</Link>
+          <ul className="navbar-nav mb-5 mb-lg-0 m-flex">
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">About</Link>
             </li>
-            <li class="nav-item">
-              {/* <a class="nav-link" href="/reserve">Reserve</a> */}
+            <li className="nav-item">
               <Link className="nav-link" to="/reserve">Reserve</Link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+            <li className="nav-item">
+              <Link className="nav-link" to="contact">Contact</Link>
             </li>
           </ul>
-          <button type="button" class="btn btn-light">Sign Up</button>
-
+          <button type="button" className="btn btn-light">Sign Up</button>
         </div>
       </nav>
     </div>

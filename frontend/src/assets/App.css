@@ -12,7 +12,8 @@
 }
 
 .navbar-brand {
-  font-family: "Roboto Slab", serif;;
+  font-family: "Roboto Slab", serif;
+  ;
 }
 
 .navbar-brand img {
@@ -27,6 +28,10 @@
 .navbar div li a {
   color: white;
   margin: 0 20px;
+}
+
+.nav-link {
+  text-decoration: none;
 }
 
 .HomeOne {
@@ -69,11 +74,12 @@
   padding: 1% 2%;
   border-radius: 20px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: 600;
   margin: auto;
 }
+
 .OneLeft button:hover {
   background-color: var(--tertiary-color);
   color: white;
@@ -82,7 +88,7 @@
   padding: 1% 2%;
   border-radius: 20px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: 600;
   cursor: pointer;
@@ -106,9 +112,9 @@
 }
 
 .OneRight {
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .OneRight img {
@@ -128,11 +134,11 @@
   align-items: center;
 }
 
-.OurServices h3{
+.OurServices h3 {
   color: var(--primary-color);
 }
 
-.OurServices h1{
+.OurServices h1 {
   margin: auto;
   width: 50%;
   font-size: 3rem;
@@ -156,10 +162,11 @@
   text-align: left;
 }
 
-.Block1 h2{
+.Block1 h2 {
   padding: 0 25px;
 }
-.Block1 p{
+
+.Block1 p {
   width: 75%;
   padding: 0 25px;
   padding-bottom: 40px;
@@ -174,11 +181,12 @@
   text-align: left;
 }
 
-.Block2 h2{
+.Block2 h2 {
   padding: 0 25px;
-  
+
 }
-.Block2 p{
+
+.Block2 p {
   width: 75%;
   padding: 0 25px;
   padding-bottom: 40px;
@@ -266,7 +274,7 @@
   padding: 1% 2%;
   border-radius: 20px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: 600;
   margin-top: 20px;
@@ -280,7 +288,7 @@
   padding: 1% 2%;
   border-radius: 20px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: 600;
   margin-top: 20px;
