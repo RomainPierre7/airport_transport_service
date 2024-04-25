@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/images/SkyRideLogo.png';
+import Logo from '../../assets/images/SkyRideLogo.png';
+import IsAuthenticated from '../../utils/IsAuthenticated';
 
 function Navbar() {
+  const isLoggedIn = IsAuthenticated();
+
   return (
     <div className='Anav'>
       <nav className="navbar navbar-expand-lg">
@@ -19,7 +22,16 @@ function Navbar() {
               <Link className="nav-link" to="contact">Contact</Link>
             </li>
           </ul>
-          <button type="button" className="btn btn-light">Sign Up</button>
+          {!isLoggedIn && (
+            <Link className="nav-link" to="signup_login">
+              <button type="button" className="btn btn-light">Sign Up / Log in</button>
+            </Link>)
+          }
+          {isLoggedIn && (
+            <Link className="nav-link" to="account">
+              <button type="button" className="btn btn-light">My account</button>
+            </Link>)
+          }
         </div>
       </nav>
     </div>

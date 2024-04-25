@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) {
     console.error('Error connecting to the MYSQL database: ' + err.stack);
     return;

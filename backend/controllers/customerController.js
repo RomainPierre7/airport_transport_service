@@ -70,6 +70,14 @@ exports.login = asyncHandler(async (req, res, next) => {
     );
 });
 
+exports.logout = asyncHandler(async (req, res, next) => {
+    res.cookie('token', 'none', {
+        expires: new Date(Date.now() + 5 * 1000),
+        httpOnly: true,
+    });
+    res.status(200).send('Logout successful');
+});
+
 exports.deleteAccount = asyncHandler(async (req, res, next) => {
     const login = req.user.login;
     db.query('DELETE FROM CUSTOMERS WHERE CUSTOMERLOGIN = ?', [login], (err, rows) => {

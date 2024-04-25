@@ -16,7 +16,7 @@ function Login() {
       password: loginData.password
     };
 
-    fetch('/customer/login', {
+    fetch('api/customer/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -33,6 +33,9 @@ function Login() {
       })
       .catch(error => {
         console.error('Error during login:', error);
+      })
+      .then(() => {
+        window.location.href = '/account';
       });
   }
 

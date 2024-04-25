@@ -4,7 +4,7 @@ function IsAuthenticated() {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    fetch("/customer/isLoggedIn")
+    fetch("/api/customer/isLoggedIn")
       .then(response => {
         if (response.status === 200) {
           setIsLogged(true);

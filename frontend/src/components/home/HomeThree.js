@@ -1,6 +1,7 @@
 import React from 'react';
-import Home2 from '../assets/images/Home2.jpg';
-import ArrowReserve from '../assets/images/ArrowReserve.png';
+import { Link } from 'react-router-dom';
+import Home2 from '../../assets/images/Home2.jpg';
+import ArrowReserve from '../../assets/images/ArrowReserve.png';
 
 function HomeThree() {
   return (
@@ -22,7 +23,9 @@ function HomeThree() {
             <p>Happy Customers</p>
           </div>
         </div>
-        <button><img src={ArrowReserve} alt='Reserve'></img>Reserve Your Spot</button>
+        <Link to="/">
+          <button><img src={ArrowReserve} alt='Reserve'></img>Reserve Your Spot</button>
+        </Link>
       </div>
 
 

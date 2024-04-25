@@ -10,6 +10,7 @@ router.get("/informations", jwtAuth.verify, customerController.getCustomerInform
 
 router.post("/register", customerController.register);
 router.post("/login", customerController.login);
+router.post("/logout", jwtAuth.verify, customerController.logout);
 
 router.delete("/delete", jwtAuth.verify, customerController.deleteAccount);
 
