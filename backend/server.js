@@ -15,9 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-app.use('/busNetwork', busNetworkRouter);
-app.use('/customer', customerRouter);
-app.use('/reservation', reservationRouter);
+app.use('/api/busNetwork', busNetworkRouter);
+app.use('/api/customer', customerRouter);
+app.use('/api/reservation', reservationRouter);
 
 app.listen(port, () => {
     console.log(`Backend server started on port ${port}`);
