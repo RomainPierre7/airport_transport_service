@@ -6,6 +6,7 @@ const busNetworkController = require("../controllers/busNetworkController");
 router.get("/routes", busNetworkController.getAllRoutes);
 router.get("/routes/:routeID", busNetworkController.getRouteByID);
 
+router.get("/stops", busNetworkController.getStops);
 router.get("/stops/routes/:routeID", busNetworkController.getStopsByRouteID);
 router.get("/stops/:stopID", busNetworkController.getStopByID);
 

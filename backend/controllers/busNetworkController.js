@@ -22,6 +22,16 @@ exports.getRouteByID = asyncHandler(async (req, res, next) => {
     });
 });
 
+exports.getStops = asyncHandler(async (req, res, next) => {
+    db.query('SELECT * FROM STOPS', (err, rows) => {
+        if (err) {
+            console.error('Error executing query', err.stack);
+            return res.status(500).send('Error executing query');
+        }
+        res.json(rows);
+    });
+});
+
 exports.getStopsByRouteID = asyncHandler(async (req, res, next) => {
     const routeID = req.params.routeID;
     db.query('SELECT * FROM STOPS WHERE STOPID IN (SELECT STOPID FROM TOHAVE WHERE ROUTEID = ?)', [routeID], (err, rows) => {

@@ -5,7 +5,7 @@ function RouteDetails(props) {
   const [stopsData, setStopsData] = useState([]);
 
   useEffect(() => {
-    fetch(`/busNetwork/routes/${props.id}`)
+    fetch(`/api/busNetwork/routes/${props.id}`)
       .then(response => response.json())
       .then(data => {
         setRouteData(data);
@@ -14,7 +14,7 @@ function RouteDetails(props) {
         console.error('Error fetching data:', error);
       });
 
-    fetch(`/busNetwork/stops/routes/${props.id}`)
+    fetch(`api//busNetwork/stops/routes/${props.id}`)
       .then(response => response.json())
       .then(data => {
         setStopsData(data);
