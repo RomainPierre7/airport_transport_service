@@ -87,7 +87,7 @@ function FindTrip() {
                                 <p>Trip: {trip.TRIPID}</p>
                                 <p>Departure time: {new Date(trip.SCHEDULETIME).toLocaleString()}</p>
                                 <p>Arrival time: {new Date(trip.ARRIVALTIME).toLocaleString()}</p>
-                                <p>Duration: {trip.DURATION}</p>
+                                <p>Duration: {Math.floor((new Date(trip.ARRIVALTIME) - new Date(trip.SCHEDULETIME)) / 60000)} minutes</p>
                                 <p>Price: {trip.PRICE} €</p>
                             </li>
                         ))}

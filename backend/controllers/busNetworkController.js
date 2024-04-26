@@ -61,7 +61,7 @@ exports.getSchedulesByDirectionStopIDDayAndTime = asyncHandler(async (req, res, 
     const day = req.params.day;
     const time = req.params.time;
     const dayTime = day + ' ' + time;
-    db.query('SELECT * FROM SCHEDULES S JOIN TRIPS T ON S.TRIPID = T.TRIPID WHERE S.STOPID = ? AND T.TRIPMAINDIRECTION = ? AND DATE(S.SCHEDULETIME) = ? AND S.SCHEDULETIME >= ?', [stopID, direction, day, dayTime], (err, rows) => {
+    db.query('SELECT *, (SELECT SCHEDULETIME FROM SCHEDULES WHERE TRIPID = T.TRIPID ORDER BY SCHEDULETIME DESC LIMIT 1) AS ARRIVALTIME FROM SCHEDULES S JOIN TRIPS T ON S.TRIPID = T.TRIPID WHERE S.STOPID = ? AND T.TRIPMAINDIRECTION = ? AND DATE(S.SCHEDULETIME) = ? AND S.SCHEDULETIME >= ?', [stopID, direction, day, dayTime], (err, rows) => {
         if (err) {
             console.error('Error executing query', err.stack);
             return res.status(500).send('Error executing query');
