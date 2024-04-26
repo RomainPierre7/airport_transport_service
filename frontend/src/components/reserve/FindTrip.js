@@ -96,7 +96,7 @@ function FindTrip() {
                     <h1>Trips found:</h1>
                     <ul>
                         {tripData && tripData.map((trip, i) => (
-                            <Link to={`/reserve/${trip.TRIPID}`}>
+                            <Link to={`/reserve/trip/${trip.TRIPID}`}>
                                 <li key={i}>
                                     <p>Route: {trip.ROUTEID}</p>
                                     <p>Trip: {trip.TRIPID}</p>
