@@ -55,13 +55,32 @@ exports.getStopByID = asyncHandler(async (req, res, next) => {
     });
 });
 
-exports.getSchedulesByDirectionStopIDDayAndTime = asyncHandler(async (req, res, next) => {
+exports.getSchedulesByDirectionStopIDDayAndTimeToAirport = asyncHandler(async (req, res, next) => {
     const direction = req.params.direction;
     const stopID = req.params.stopID;
     const day = req.params.day;
     const time = req.params.time;
     const dayTime = day + ' ' + time;
     db.query('SELECT *, (SELECT SCHEDULETIME FROM SCHEDULES WHERE TRIPID = T.TRIPID ORDER BY SCHEDULETIME DESC LIMIT 1) AS ARRIVALTIME FROM SCHEDULES S JOIN TRIPS T ON S.TRIPID = T.TRIPID WHERE S.STOPID = ? AND T.TRIPMAINDIRECTION = ? AND DATE(S.SCHEDULETIME) = ? AND S.SCHEDULETIME >= ?', [stopID, direction, day, dayTime], (err, rows) => {
+        if (err) {
+            console.error('Error executing query', err.stack);
+            return res.status(500).send('Error executing query');
+        }
+        rows.forEach(row => {
+            row.PRICE = TICKET_PRICE;
+        });
+
+        res.json(rows);
+    });
+});
+
+exports.getSchedulesByDirectionStopIDDayAndTimeFromAirport = asyncHandler(async (req, res, next) => {
+    const direction = req.params.direction;
+    const stopID = req.params.stopID;
+    const day = req.params.day;
+    const time = req.params.time;
+    const dayTime = day + ' ' + time;
+    db.query('SELECT *, (SELECT SCHEDULETIME FROM SCHEDULES WHERE TRIPID = T.TRIPID ORDER BY SCHEDULETIME ASC LIMIT 1) AS DEPARTURETIME FROM SCHEDULES S JOIN TRIPS T ON S.TRIPID = T.TRIPID WHERE S.STOPID = ? AND T.TRIPMAINDIRECTION = ? AND DATE(S.SCHEDULETIME) = ? AND S.SCHEDULETIME >= ?', [stopID, direction, day, dayTime], (err, rows) => {
         if (err) {
             console.error('Error executing query', err.stack);
             return res.status(500).send('Error executing query');

@@ -23,7 +23,7 @@ function HomeThree() {
             <p>Happy Customers</p>
           </div>
         </div>
-        <Link to="/">
+        <Link to="/reserve">
           <button><img src={ArrowReserve} alt='Reserve'></img>Reserve Your Spot</button>
         </Link>
       </div>

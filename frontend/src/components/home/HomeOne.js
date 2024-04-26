@@ -11,7 +11,7 @@ function HomeOne() {
         <h1>Effortless Airport Commute:</h1>
         <h2>Riga's Best</h2>
         <p>Our dedicated fleet ensures prompt pickups and drop-offs, making your journey hassle-free. Experience unparalleled comfort and reliability with our professional drivers and spacious vehicles.</p>
-        <Link to="/">
+        <Link to="/reserve">
           <button><img src={ArrowReserve} alt='Reserve'></img>Reserve Your Spot</button>
         </Link>
         <h5>Our Trusted Partners</h5>

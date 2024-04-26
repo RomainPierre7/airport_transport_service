@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function GetStops() {
     const [stopsData, setStopsData] = useState([]);
@@ -36,15 +37,28 @@ function FindTrip() {
             time: FindTripData.time,
         };
 
-        fetch('api/busNetwork/schedules/direction/' + formData.direction + '/stops/' + formData.from + '/day/' + formData.day + '/time/' + formData.time)
-            .then(response => response.json())
-            .then(data => {
-                setTripData(data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        if (formData.direction === '1') {
+            fetch('api/busNetwork/schedules/direction/' + formData.direction + '/stops/' + formData.from + '/day/' + formData.day + '/time/' + formData.time + '/to')
+                .then(response => response.json())
+                .then(data => {
+                    setTripData(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        } else {
+            fetch('api/busNetwork/schedules/direction/' + formData.direction + '/stops/' + formData.from + '/day/' + formData.day + '/time/' + formData.time + '/from')
+                .then(response => response.json())
+                .then(data => {
+                    setTripData(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
     }
+
+    let pickupStopTitle = FindTripData.direction === '1' ? 'Select your pickup stop' : 'Select your drop-off stop';
 
     return (
         <div>
@@ -55,7 +69,7 @@ function FindTrip() {
                         <option value="1">To the airport</option>
                         <option value="0">From the airport</option>
                     </select>
-                    <h2>Select your pickup stop</h2>
+                    <h2>{pickupStopTitle}</h2>
                     <select id="from" name="from" value={FindTripData.from} onChange={handleInputChange} required>
                         {stopsData && stopsData.map((stop, i) => (
                             <option key={i} value={stop.STOPID}>{stop.STOPNAME}</option>
@@ -82,14 +96,27 @@ function FindTrip() {
                     <h1>Trips found:</h1>
                     <ul>
                         {tripData && tripData.map((trip, i) => (
-                            <li key={i}>
-                                <p>Route: {trip.ROUTEID}</p>
-                                <p>Trip: {trip.TRIPID}</p>
-                                <p>Departure time: {new Date(trip.SCHEDULETIME).toLocaleString()}</p>
-                                <p>Arrival time: {new Date(trip.ARRIVALTIME).toLocaleString()}</p>
-                                <p>Duration: {Math.floor((new Date(trip.ARRIVALTIME) - new Date(trip.SCHEDULETIME)) / 60000)} minutes</p>
-                                <p>Price: {trip.PRICE} €</p>
-                            </li>
+                            <Link to={`/reserve/${trip.TRIPID}`}>
+                                <li key={i}>
+                                    <p>Route: {trip.ROUTEID}</p>
+                                    <p>Trip: {trip.TRIPID}</p>
+                                    {trip.TRIPMAINDIRECTION === 1 ? (
+                                        <>
+                                            <p>Departure time: {new Date(trip.SCHEDULETIME).toLocaleString()}</p>
+                                            <p>Arrival time: {new Date(trip.ARRIVALTIME).toLocaleString()}</p>
+                                            <p>Duration: {Math.abs(new Date(trip.ARRIVALTIME) - new Date(trip.SCHEDULETIME)) / 60000} minutes</p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p>Departure time: {new Date(trip.DEPARTURETIME).toLocaleString()}</p>
+                                            <p>Arrival time: {new Date(trip.SCHEDULETIME).toLocaleString()}</p>
+                                            <p>Duration: {Math.abs(new Date(trip.SCHEDULETIME) - new Date(trip.DEPARTURETIME)) / 60000} minutes</p>
+                                        </>
+                                    )}
+                                    <p>Price: {trip.PRICE} €</p>
+                                </li>
+
+                            </Link>
                         ))}
                     </ul>
 
