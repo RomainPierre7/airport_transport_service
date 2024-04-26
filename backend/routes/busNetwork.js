@@ -10,7 +10,7 @@ router.get("/stops", busNetworkController.getStops);
 router.get("/stops/routes/:routeID", busNetworkController.getStopsByRouteID);
 router.get("/stops/:stopID", busNetworkController.getStopByID);
 
-router.get("/schedules/stops/:stopID/day/:day", busNetworkController.getSchedulesByStopIDAndDay);
+router.get("/schedules/direction/:direction/stops/:stopID/day/:day/time/:time", busNetworkController.getSchedulesByDirectionStopIDDayAndTime);
 router.get("/schedules/trips/:tripID", busNetworkController.getSchedulesByTripID);
 router.get("/schedules/:scheduleID", busNetworkController.getScheduleByID);
 

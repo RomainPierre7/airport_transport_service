@@ -13,14 +13,13 @@ function GetStops() {
                 console.error('Error fetching data:', error);
             });
     }, []);
-
-    return stopsData;
+    return stopsData.filter(stop => stop.STOPID !== 1);
 }
 
 function FindTrip() {
     const stopsData = GetStops();
-
-    const [FindTripData, setFindTripData] = useState({ direction: '', from: '', day: '', time: '' });
+    const [FindTripData, setFindTripData] = useState({ direction: '1', from: '2', day: '', time: '' });
+    const [tripData, setTripData] = useState([]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -37,26 +36,13 @@ function FindTrip() {
             time: FindTripData.time,
         };
 
-        fetch('api/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Connection successful');
-                    window.location.reload();
-                } else {
-                    console.error('Error during FindTrip');
-                }
+        fetch('api/busNetwork/schedules/direction/' + formData.direction + '/stops/' + formData.from + '/day/' + formData.day + '/time/' + formData.time)
+            .then(response => response.json())
+            .then(data => {
+                setTripData(data);
             })
             .catch(error => {
-                console.error('Error during FindTrip:', error);
-            })
-            .then(() => {
-                window.location.href = '/account';
+                console.error('Error fetching data:', error);
             });
     }
 
@@ -88,6 +74,27 @@ function FindTrip() {
                     <button type="submit">Search</button>
                 </div>
             </form>
+
+            {tripData && tripData.length === 0 ? (
+                <p>No trips found</p>
+            ) : (
+                <div>
+                    <h1>Trips found:</h1>
+                    <ul>
+                        {tripData && tripData.map((trip, i) => (
+                            <li key={i}>
+                                <p>Route: {trip.ROUTEID}</p>
+                                <p>Trip: {trip.TRIPID}</p>
+                                <p>Departure time: {new Date(trip.SCHEDULETIME).toLocaleString()}</p>
+                                <p>Arrival time: {new Date(trip.ARRIVALTIME).toLocaleString()}</p>
+                                <p>Duration: {trip.DURATION}</p>
+                                <p>Price: {trip.PRICE} €</p>
+                            </li>
+                        ))}
+                    </ul>
+
+                </div>
+            )}
         </div>
     );
 }

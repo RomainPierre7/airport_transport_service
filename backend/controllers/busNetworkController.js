@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const db = require('../databaseConnection');
+const { TICKET_PRICE } = require('../utils/constants');
 
 exports.getAllRoutes = asyncHandler(async (req, res, next) => {
     db.query('SELECT * FROM ROUTES', (err, rows) => {
@@ -54,14 +55,21 @@ exports.getStopByID = asyncHandler(async (req, res, next) => {
     });
 });
 
-exports.getSchedulesByStopIDAndDay = asyncHandler(async (req, res, next) => {
+exports.getSchedulesByDirectionStopIDDayAndTime = asyncHandler(async (req, res, next) => {
+    const direction = req.params.direction;
     const stopID = req.params.stopID;
     const day = req.params.day;
-    db.query('SELECT * FROM SCHEDULES WHERE STOPID = ? AND DATE(SCHEDULETIME) = ?', [stopID, `${day}`], (err, rows) => {
+    const time = req.params.time;
+    const dayTime = day + ' ' + time;
+    db.query('SELECT * FROM SCHEDULES S JOIN TRIPS T ON S.TRIPID = T.TRIPID WHERE S.STOPID = ? AND T.TRIPMAINDIRECTION = ? AND DATE(S.SCHEDULETIME) = ? AND S.SCHEDULETIME >= ?', [stopID, direction, day, dayTime], (err, rows) => {
         if (err) {
             console.error('Error executing query', err.stack);
             return res.status(500).send('Error executing query');
         }
+        rows.forEach(row => {
+            row.PRICE = TICKET_PRICE;
+        });
+
         res.json(rows);
     });
 });

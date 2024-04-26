@@ -43,7 +43,7 @@ function Navbar() {
               <button type="button" className="btn btn-light">Sign Up / Log in</button>
             </Link>)
           }
-          {isLoggedIn && !isOnAccountPage(
+          {isLoggedIn && !isOnAccountPage && (
             <Link className="nav-link" to="account">
               <button type="button" className="btn btn-light">My account</button>
             </Link>)
