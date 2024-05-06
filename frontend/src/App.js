@@ -9,6 +9,8 @@ import LoginSignup from './pages/LoginSignup.js';
 import Navbar from './components/general/Navbar.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/App.css';
+import SeeTrip from './pages/SeeTrip.js';
+import Payment from './pages/Payment.js';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/reserve" element={<Reserve />} />
+        <Route path="/reserve/trip/:tripId/stop/:stopId" element={<SeeTrip />} />
+        <Route path="/reserve/trip/:tripId/stop/:stopId/payment" element={<Payment />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/account" element={<Account />} />
         <Route path="/signup_login" element={<LoginSignup />} />

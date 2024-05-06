@@ -3,8 +3,24 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/images/SkyRideLogo.png';
 import IsAuthenticated from '../../utils/IsAuthenticated';
 
+const handleLogout = () => {
+  fetch(`api/customer/logout`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({})
+  })
+    .then(response => response.json())
+    .catch(error => {
+      console.error('Error while logout:', error);
+    });
+  window.location.href = "/";
+};
+
 function Navbar() {
   const isLoggedIn = IsAuthenticated();
+  const isOnAccountPage = window.location.pathname === '/account';
 
   return (
     <div className='Anav'>
@@ -27,11 +43,14 @@ function Navbar() {
               <button type="button" className="btn btn-light">Sign Up / Log in</button>
             </Link>)
           }
-          {isLoggedIn && (
+          {isLoggedIn && !isOnAccountPage && (
             <Link className="nav-link" to="account">
               <button type="button" className="btn btn-light">My account</button>
             </Link>)
           }
+          {isLoggedIn && isOnAccountPage && (
+            <button type="button" className="btn btn-light" onClick={handleLogout}>Log out</button>
+          )}
         </div>
       </nav>
     </div>
