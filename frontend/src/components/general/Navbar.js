@@ -20,7 +20,6 @@ const handleLogout = () => {
 
 function Navbar() {
   const isLoggedIn = IsAuthenticated();
-  const isOnAccountPage = window.location.pathname === '/account';
 
   return (
     <div className='Anav'>
@@ -43,12 +42,12 @@ function Navbar() {
               <button type="button" className="btn btn-light">Sign Up / Log in</button>
             </Link>)
           }
-          {isLoggedIn && !isOnAccountPage && (
+          {isLoggedIn && (
             <Link className="nav-link" to="account">
               <button type="button" className="btn btn-light">My account</button>
             </Link>)
           }
-          {isLoggedIn && isOnAccountPage && (
+          {isLoggedIn && (
             <button type="button" className="btn btn-light" onClick={handleLogout}>Log out</button>
           )}
         </div>
