@@ -310,5 +310,87 @@
 .TitleFour h1 {
   color: var(--primary-color);
   font-size: 3rem;
-  margin: 70px 0 100px;
+  margin: 70px 0 50px;
+}
+
+.PhotosFour {
+  margin: 0 200px;
+  display: flex;
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+}
+
+.PhotosFour h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.PhotosFour img {
+  width: 80%;
+  margin-top: 25px;
+}
+
+.PhotosFourRight{
+  margin-top: 150px;
+}
+
+/* Contact */
+
+.Contact {
+  background-color: var(--primary-color);
+  padding-top: 50px;
+}
+
+.Contact hr {
+  color: white;
+  width: 75%;
+  margin: auto;
+}
+
+.ContactOne {
+  padding: 2% 5%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Contact1 {
+  width: 30%;
+  color: white;
+}
+
+.Contact1 p{
+  width: 80%;
+  color: white;
+  font-size: 0.8rem;
+  padding-top: 20px;
+}
+
+.Contact2 {
+  width: 30%;
+  color: white;
+}
+
+.Contact h4{
+  font-weight: bold;
+}
+
+.Contact2 a{
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.Contact3 {
+  width: 30%;
+}
+
+.ContactTwo {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.footerfour img {
+  width: 50px;
 }
