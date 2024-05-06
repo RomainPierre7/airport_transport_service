@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const db = require('../databaseConnection');
 const generatePdf = require('../utils/pdfTicket');
 const path = require('path');
+const { TICKET_PRICE } = require('../utils/constants');
 
 exports.getReservationsByCustomer = asyncHandler(async (req, res, next) => {
     const login = req.user.login;
@@ -86,7 +87,7 @@ exports.getTicketByReservationID = asyncHandler(async (req, res, next) => {
 });
 
 exports.createReservation = asyncHandler(async (req, res, next) => {
-    const { customerID, stopID, tripID, reservationPrice } = req.body;
+    const { stopID, tripID } = req.body;
     const login = req.user.login;
     db.query('SELECT CUSTOMERID FROM CUSTOMERS WHERE CUSTOMERLOGIN = ?', [login], (err, rows) => {
         if (err) {
@@ -96,10 +97,7 @@ exports.createReservation = asyncHandler(async (req, res, next) => {
         if (rows.length === 0) {
             return res.status(404).send('Customer not found');
         }
-        if (rows[0].CUSTOMERID != customerID) {
-            return res.status(403).send('Forbidden');
-        }
-        db.query('INSERT INTO RESERVATIONS (CUSTOMERID, STOPID, TRIPID, RESERVATIONTIME, RESERVATIONPRICE) VALUES (?, ?, ?, ?, ?)', [customerID, stopID, tripID, new Date(), reservationPrice], (err, rows) => {
+        db.query('INSERT INTO RESERVATIONS (CUSTOMERID, STOPID, TRIPID, RESERVATIONTIME, RESERVATIONPRICE) VALUES (?, ?, ?, ?, ?)', [rows[0].CUSTOMERID, stopID, tripID, new Date(), TICKET_PRICE], (err, rows) => {
             if (err) {
                 console.error('Error executing query', err.stack);
                 return res.status(500).send('Error executing query');

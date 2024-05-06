@@ -1,6 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+function createReservation(StopID, TripID) {
+    fetch('/api/reservation/book', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            stopID: StopID,
+            tripID: TripID,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
 function TripDetails() {
     const { tripId, stopId } = useParams();
 
@@ -64,7 +84,7 @@ function TripDetails() {
                 </>
             )}
             <Link to={`/reserve/trip/${tripId}/stop/${stopId}/payment`}>
-                <button>Proceed to payment</button>
+                <button onClick={() => createReservation(stopData[0].STOPID, tripData[0].TRIPID)}>Proceed to payment</button>
             </Link>
         </div >
     );
