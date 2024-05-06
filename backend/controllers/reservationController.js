@@ -6,7 +6,7 @@ const { TICKET_PRICE } = require('../utils/constants');
 
 exports.getReservationsByCustomer = asyncHandler(async (req, res, next) => {
     const login = req.user.login;
-    db.query('SELECT * FROM RESERVATIONS WHERE CUSTOMERID = (SELECT CUSTOMERID FROM CUSTOMERS WHERE CUSTOMERLOGIN = ?)', [login], (err, rows) => {
+    db.query('SELECT T.TRIPMAINDIRECTION, S.STOPNAME, R.*, SC.SCHEDULETIME, (SELECT SCHEDULETIME FROM SCHEDULES SC WHERE SC.TRIPID = T.TRIPID AND SC.STOPID = 1) AS AIRPORTTIME FROM RESERVATIONS R JOIN TRIPS T ON T.TRIPID = R.TRIPID JOIN STOPS S ON S.STOPID = R.STOPID JOIN SCHEDULES SC ON SC.STOPID = S.STOPID AND SC.TRIPID = T.TRIPID WHERE CUSTOMERID = (SELECT CUSTOMERID FROM CUSTOMERS WHERE CUSTOMERLOGIN = ?)', [login], (err, rows) => {
         if (err) {
             console.error('Error executing query', err.stack);
             return res.status(500).send('Error executing query');

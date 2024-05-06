@@ -43,13 +43,38 @@ function MyTripsData() {
             <ul>
                 {tripsData.map((trip) => (
                     <li key={trip.RESERVATIONID}>
-                        {trip.TRIPID}
+                        {trip.TRIPMAINDIRECTION === 1 ? (
+                            <span>Direction: Airport</span>
+                        ) : (
+                            <span>Direction: City</span>
+                        )}
+                        <br />
+                        {trip.TRIPMAINDIRECTION === 1 ? (
+                            <div>
+                                From: {trip.STOPNAME}
+                                <br />
+                                To: Airport
+                                <br />
+                                Time: {new Date(trip.SCHEDULETIME).toLocaleString()}
+                            </div>
+                        ) : (
+                            <div>
+                                From: Airport
+                                <br />
+                                To: {trip.STOPNAME}
+                                <br />
+                                Time: {new Date(trip.AIRPORTTIME).toLocaleString()}
+                            </div>
+                        )}
+                        Price: {trip.RESERVATIONPRICE} €
+                        <br />
                         <button onClick={() => handleButtonClick(trip.RESERVATIONID)}>Get Ticket</button>
                     </li>
                 ))}
             </ul>
         </div>
     );
+
 }
 
 export default MyTripsData;
