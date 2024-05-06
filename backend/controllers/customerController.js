@@ -64,7 +64,7 @@ exports.login = asyncHandler(async (req, res, next) => {
             return res.status(401).send('Invalid password');
         }
         const token = jwt.sign({ login }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { httpOnly: false });
         res.status(200).send('Login successful');
     }
     );
@@ -73,7 +73,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 exports.logout = asyncHandler(async (req, res, next) => {
     res.cookie('token', 'none', {
         expires: new Date(Date.now() + 5 * 1000),
-        httpOnly: true,
+        httpOnly: false,
     });
     res.status(200).send('Logout successful');
 });

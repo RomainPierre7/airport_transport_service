@@ -7,6 +7,7 @@ const reservationController = require("../controllers/reservationController");
 
 router.get("/customer/", jwtAuth.verify, reservationController.getReservationsByCustomer);
 router.get("/:reservationID", jwtAuth.verify, reservationController.getReservationByID);
+router.get("/ticket/:reservationID", jwtAuth.verify, reservationController.getTicketByReservationID);
 
 router.post("/book", jwtAuth.verify, reservationController.createReservation);
 

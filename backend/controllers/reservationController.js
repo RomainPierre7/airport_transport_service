@@ -1,5 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const db = require('../databaseConnection');
+const generatePdf = require('../utils/pdfTicket');
+const path = require('path');
 
 exports.getReservationsByCustomer = asyncHandler(async (req, res, next) => {
     const login = req.user.login;
@@ -27,6 +29,16 @@ exports.getReservationByID = asyncHandler(async (req, res, next) => {
         res.json(rows);
     }
     );
+});
+
+exports.getTicketByReservationID = asyncHandler(async (req, res, next) => {
+    const reservationID = req.params.reservationID;
+
+    generatePdf.generatePDF(reservationID, 1, 'Paris', 'Lyon', '2021-06-10', 'John', 'Doe', 50)
+        .then(() => {
+            res.setHeader('Content-Type', 'application/pdf');
+            res.sendFile(path.join(__dirname, `../pdf/ticket_${reservationID}.pdf`));
+        })
 });
 
 exports.createReservation = asyncHandler(async (req, res, next) => {
