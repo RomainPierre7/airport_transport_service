@@ -61,9 +61,9 @@ function FindTrip() {
     let pickupStopTitle = FindTripData.direction === '1' ? 'Select your pickup stop' : 'Select your drop-off stop';
 
     return (
-        <div>
+        <div className='findtrip'>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className='direction'>
                     <h2>Select your direction</h2>
                     <select id="direction" name="direction" value={FindTripData.direction} onChange={handleInputChange} required>
                         <option value="1">To the airport</option>
@@ -76,19 +76,18 @@ function FindTrip() {
                         ))}
                     </select>
                 </div>
-                <div>
+                <div className='direction'>
                     <h2>Select the day</h2>
                     <input type="date" id="day" name="day" value={FindTripData.day} onChange={handleInputChange} required />
-                </div>
-                <div>
                     <h2>Select the time</h2>
                     <input type="time" id="time" name="time" value={FindTripData.time} onChange={handleInputChange} required />
                 </div>
-                <div>
+                <div className='tripbutton'>
                     <button type="submit">Search</button>
-                </div>
+                 </div>
             </form>
-
+            
+    
             {tripData && tripData.length === 0 ? (
                 <p>No trips found</p>
             ) : (

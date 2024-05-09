@@ -5,6 +5,8 @@
   --tertiary-color: #000333;
 }
 
+/* Navbar */
+
 .Anav {
   background-color: var(--primary-color);
   padding: 1% 5%;
@@ -33,6 +35,276 @@
 .nav-link {
   text-decoration: none;
 }
+
+/* Sign Up, log In */
+
+.loginsignup {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-around;
+  padding-top: 100px;
+  color: white;
+  height: 100vh;
+
+}
+
+.loginbox {
+  width: 470px;
+  height: 320px;
+  background-color: black;
+  text-align: center;
+  border: 2px #65ccc5 solid;
+  border-radius: 10px;
+  display: inline;
+  margin-top: 100px;
+}
+
+.loginbox h1 {
+  margin-top: 25px;
+}
+
+.signupbox {
+  width: 470px;
+  height: 320px;
+  background-color: black;
+  text-align: center;
+  border: 2px #65ccc5 solid;
+  border-radius: 10px;
+  display: inline;
+}
+
+.signupbox h1 {
+  margin-top: 25px;
+}
+
+.signupbox {
+  width: 470px;
+  height: 520px;
+  background-color: black;
+  text-align: center;
+  border: 2px #65ccc5 solid;
+}
+
+.login {
+  margin-top: 20px;
+}
+
+.login h3 {
+  background-color: var(--primary-color);
+  font-size: 1rem;
+  padding: 11px 20px;
+  border-radius: 5%;
+  margin-right: -10px;
+  z-index: 1;
+  margin-top: 8px;
+  width: 120px;
+}
+
+.loginusernamebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginpasswordbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.login input {
+  padding: 8px 50px;
+  border-radius: 5px;
+}
+
+.login button {
+  padding: 10px 50px;
+  margin-top: 17px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.login button:hover {
+  padding: 10px 50px;
+  margin-top: 10px;
+  background-color: #65ccc5;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  transition: 0.5s;
+}
+
+.signupusernamebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupnamebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.signupsurnamebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.signupbirthdaybox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.signuppasswordbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Account */
+
+.accountgeneral {
+  background-image: linear-gradient(var(--primary-color), black);
+  height: 100vh;
+}
+
+.accounterror {
+  text-align: center;
+  padding-top: 50px;
+  color: white;
+}
+
+.accounterror h1 {
+  background-color: rgba(249, 249, 22, 0.816);
+  color: black;
+  margin: auto;
+  width: 450px;
+  padding: 10px 0;
+  border: 2px black solid;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+
+.accounterror h2 {
+  font-size: 1.3rem;
+  margin-top: 30px;
+}
+
+.accounterror a {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  text-decoration: none;
+  display: block;
+  width: 100px;
+  margin: 20px auto 0;
+  padding: 7px 0;
+  border-radius: 5px;
+  border: 2px solid var(--tertiary-color);
+}
+
+.accounterror a:hover {
+  background-color: var(--tertiary-color);
+  color: white;
+  transition: 0.5s;
+  border: 2px solid white;
+}
+
+.accountsuccess {
+  background-color: var(--primary-color);
+  padding: 1% 5%;
+  color: black;
+}
+
+.accountsuccess h1 {
+  color: white;
+}
+
+/* My Trips */ 
+
+.mytrips {
+  text-align: center;
+  margin-top: 50px;
+  height: 100vh;
+}
+
+.mytrips h1 {
+  font-weight: bold;
+  font-style: italic;
+  color: var(--tertiary-color);
+}
+
+.mytrips ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  list-style-type: none
+}
+
+.mytrips ul li{
+  width: 300px;
+  height: 360px;
+  background-color: #FAACA8;
+  background-image: radial-gradient(rgba(249, 249, 249, 0.788) 20%, #C8BB9F);
+  margin-top: 50px;
+  padding: 20px 20px;
+  border: 2px var(--tertiary-color) solid;
+  border-radius: 15px;
+}
+
+.mytrips ul li span{
+  color: var(--tertiary-color);
+  border: 1px solid var(--tertiary-color);
+  border-radius: 5px;
+  width: 70%;
+  padding: 5px 15px;
+  font-weight: bold;
+}
+
+.mytrips ul li div {
+  color: var(--tertiary-color);
+  border: 2px solid var(--tertiary-color);
+  border-radius: 5px;
+  width: 85%;
+  padding: 5px 15px;
+  margin: 30px auto;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.1rem;
+  font-weight: bolder;
+  color: var(--primary-color);
+}
+
+.mytrips h4 {
+  font-size: 1.3rem;
+  color: var(--tertiary-color);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.mytrips button {
+  padding: 7px 25px;
+  border-radius: 5px;
+}
+
+.mytrips button:hover {
+  background-color: var(--tertiary-color);
+  color: white;
+}
+/* HomeOne */
 
 .HomeOne {
   background-color: var(--primary-color);
@@ -339,7 +611,8 @@
 
 .Contact {
   background-color: var(--primary-color);
-  padding-top: 50px;
+  padding: 2% 5%;
+  color: white;
 }
 
 .Contact hr {
@@ -352,22 +625,26 @@
   padding: 2% 5%;
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .Contact1 {
+  font-size: 1.5rem;
   width: 30%;
   color: white;
 }
 
 .Contact1 p{
-  width: 80%;
+  width: 90%;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding-top: 20px;
 }
 
 .Contact2 {
-  width: 30%;
+  margin-top: 10px;
+  width: 15%;
   color: white;
 }
 
@@ -375,23 +652,99 @@
   font-weight: bold;
 }
 
-.Contact2 a{
+.Contact a{
   color: white;
   text-decoration: none;
   display: block;
 }
 
 .Contact3 {
-  width: 30%;
+  margin-top: 10px;
+  width: 15%;
+  color: white;
+}
+
+.Contact4 {
+  margin-top: 10px;
+  width: 25%;
 }
 
 .ContactTwo {
+  padding: 2% 5%;
   display: flex;
-  flex-wrap: wrap;
-  
+  margin: auto;
+  justify-content: space-between;
+}
+
+.footerfour {
+  display: flex;
+  justify-content: space-around;
 }
 
 .footerfour img {
   width: 50px;
-  margin: 70px 0 100px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 35%;
+  margin: 0 7px;
 }
+
+/* Reserve */
+
+.reserve {
+  text-align: center;
+  height: 100vh;
+  background-color: var(--primary-color);
+  padding-top: 20px;
+  color: white;
+}
+
+.direction {
+  width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.direction h2 {
+  font-size: 1.7rem;
+  border: 3px white solid;
+  border-radius: 10px;
+  padding: 10px 25px;
+  margin: 20px 0;
+}
+
+.direction select {
+  width: 200px;
+  padding: 10px 25px;
+  border: 3px solid var(--tertiary-color);
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--tertiary-color);
+  cursor: pointer;
+}
+
+.direction input {
+  width: 200px;
+  padding: 10px 25px;
+  border: 3px solid var(--tertiary-color);
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--tertiary-color);
+  cursor: pointer;
+}
+
+.tripbutton button {
+  padding: 5px 35px;
+  background-color: white;
+  color: var(--tertiary-color);
+  margin-top: 25px;
+  border: 2px var(--tertiary-color) solid;
+  border-radius: 5px;
+}
+
+.tripbutton button:hover {
+  background-color: var(--tertiary-color);
+  color: white;
+  border: 2px white solid;
+}
+

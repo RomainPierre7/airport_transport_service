@@ -11,16 +11,18 @@ const Account = () => {
   }
 
   return (
-    <div>
+    <div className='accountgeneral'>
       {login === null ? (
-        <div>
-          <h1>Log in to view your account</h1>
-          If you don't have an account, you can sign up <a href="/signup_login">here</a>.
+        <div className='accounterror'>
+          <h1>LOG IN TO VIEW YOUR ACCOUNT</h1>
+          <h2>If you don't have an account, you can sign up.</h2> 
+          <a href="/signup_login">SIGNUP</a>
           <br />
-          If you have just tried to log in, please check your credentials and try again <a href="/signup_login">here</a>.
+          <h2>If you have just tried to log in, please check your credentials and try again.</h2> 
+          <a href="/signup_login">LOGIN</a>
         </div>
       ) : (
-        <div>
+        <div className='accountsuccess'>
           <h1>{login}'s account</h1>
           <MyTripsData login={login} />
         </div>

@@ -4,12 +4,15 @@ import Signup from '../components/login_signup/Signup';
 
 function LoginPage() {
   return (
-    <div>
-      <h1>Log in</h1>
+    <div className='loginsignup'>
+      <div className='loginbox'>
+      <h1>LOG IN</h1>
       <Login />
-
-      <h1>Sign up</h1>
+      </div>
+      <div className='signupbox'>
+      <h1>SIGN UP</h1>
       <Signup />
+      </div>
     </div>
   );
 }

@@ -38,8 +38,8 @@ function MyTripsData() {
     };
 
     return (
-        <div>
-            <h1>My Trips</h1>
+        <div className='mytrips'>
+            <h1>RESERVED TRIPS</h1>
             <ul>
                 {tripsData.map((trip) => (
                     <li key={trip.RESERVATIONID}>
@@ -66,7 +66,7 @@ function MyTripsData() {
                                 Time: {new Date(trip.AIRPORTTIME).toLocaleString()}
                             </div>
                         )}
-                        Price: {trip.RESERVATIONPRICE} €
+                        <h4>Price: {trip.RESERVATIONPRICE} €</h4>
                         <br />
                         <button onClick={() => handleButtonClick(trip.RESERVATIONID)}>Get Ticket</button>
                     </li>

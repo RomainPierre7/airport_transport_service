@@ -43,25 +43,30 @@ function Signup() {
   }
 
   return (
-    <div>
+    <div className='login'>
       <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text" id="login" name="login" placeholder="Login" value={signupData.login} onChange={handleInputChange} required />
+        <div className='signupusernamebox'>
+        <h3>username</h3>
+          <input type="text" id="login" name="login" placeholder="" value={signupData.login} onChange={handleInputChange} required />
         </div>
-        <div>
-          <input type="text" id="name" name="name" placeholder="Name" value={signupData.name} onChange={handleInputChange} required />
+        <div className='signupnamebox'>
+        <h3>name</h3>
+          <input type="text" id="name" name="name" placeholder="" value={signupData.name} onChange={handleInputChange} required />
         </div>
-        <div>
-          <input type="text" id="surname" name="surname" placeholder="Surname" value={signupData.surname} onChange={handleInputChange} required />
+        <div className='signupsurnamebox'>
+        <h3>surname</h3>
+          <input type="text" id="surname" name="surname" placeholder="" value={signupData.surname} onChange={handleInputChange} required />
         </div>
-        <div>
-          <input type="password" id="password" name="password" placeholder="Password" value={signupData.password} onChange={handleInputChange} required />
+        <div className='signuppasswordbox'>
+        <h3>password</h3>
+          <input type="password" id="password" name="password" placeholder="" value={signupData.password} onChange={handleInputChange} required />
         </div>
-        <div>
+        <div className='signupbirthdaybox'>
+        <h3>birthdate</h3>
           <input type="date" id="birthdate" name="birthdate" value={signupData.birthdate} onChange={handleInputChange} required />
         </div>
         <div>
-          <button type="submit">Sign up</button>
+          <button type="submit">CONFIRM</button>
         </div>
       </form>
     </div>

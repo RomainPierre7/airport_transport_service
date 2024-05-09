@@ -4,7 +4,7 @@ import FindTrip from '../components/reserve/FindTrip';
 const Reserve = () => {
 
   return (
-    <div>
+    <div className='reserve'>
       <h1>Reserve</h1>
       <FindTrip />
     </div>
