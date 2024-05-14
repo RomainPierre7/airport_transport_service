@@ -3,7 +3,7 @@
 School software engineering project on a web application for an airport transport service company.
 
 <p align="center">
-<img src="frontend/src/assets/images/SkyRideLogo.png" alt="Logo" width="300" height="300">
+<img src="frontend/src/assets/images/SkyRideLogo.png" alt="Logo" width="300">
 
 ## Stack
 
