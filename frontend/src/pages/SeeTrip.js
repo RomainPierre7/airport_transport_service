@@ -4,8 +4,8 @@ import TripDetails from '../components/reserve/TripDetails';
 const SeeTrip = () => {
 
   return (
-    <div>
-      <h1>SeeTrip</h1>
+    <div className='seetrip'>
+      <h1>TRIP INFO</h1>
       <TripDetails />
     </div>
   );

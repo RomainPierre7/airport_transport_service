@@ -60,13 +60,17 @@ function TripDetails() {
     }, [stopId]);
 
     return (
-        <div>
-            <h2>Trip Details</h2>
+        <div className='tripdtls'>  
             {tripData.length > 0 && stopData.length > 0 && vehicleData.length > 0 && (
                 <>
+                <div className='tripdetails'>
+                <div className='stopdetails'>
+                    <h2>Trip Details</h2>
                     <p>Trip ID: {tripData[0].TRIPID}</p>
                     <p>Route: {tripData[0].ROUTEID}</p>
                     <p>Direction: {tripData[0].TRIPMAINDIRECTION}</p>
+                    </div>
+                    <div className='stopdetails'>
                     <h2>Stop Details</h2>
                     <p>Stop ID: {stopData[0].STOPID}</p>
                     <p>Stop Name: {stopData[0].STOPNAME}</p>
@@ -74,6 +78,8 @@ function TripDetails() {
                     <p>Stop Latitude: {stopData[0].STOPLATITUDE}</p>
                     <p>Stop Longitude: {stopData[0].STOPLONGITUDE}</p>
                     <p>PRM Access: {stopData[0].PRMACCESS}</p>
+                    </div>
+                    <div className='stopdetails'>
                     <h2>Vehicle Details</h2>
                     <p>Vehicle ID: {vehicleData[0].VEHICLEID}</p>
                     <p>Vehicle Model: {vehicleData[0].VEHICLEMODEL}</p>
@@ -81,6 +87,8 @@ function TripDetails() {
                     <p>Vehicle Type: {vehicleData[0].VEHICLETYPE}</p>
                     <p>License Plate: {vehicleData[0].VEHICLELICENSE}</p>
                     <p>Vehicle Capacity: {vehicleData[0].VEHICLECAPACITY}</p>
+                    </div>
+                    </div>
                 </>
             )}
             <Link to={`/reserve/trip/${tripId}/stop/${stopId}/payment`}>

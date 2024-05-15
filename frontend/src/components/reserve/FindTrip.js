@@ -91,8 +91,8 @@ function FindTrip() {
             {tripData && tripData.length === 0 ? (
                 <p>No trips found</p>
             ) : (
-                <div>
-                    <h1>Trips found:</h1>
+                <div className='possibleroutes'>
+                    <h1>TRIPS FOUND:</h1>
                     <ul>
                         {tripData && tripData.map((trip, i) => (
                             <Link to={`/reserve/trip/${trip.TRIPID}/stop/${FindTripData.from}`}>
