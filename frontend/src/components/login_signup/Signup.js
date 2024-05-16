@@ -29,16 +29,15 @@ function Signup() {
       .then(response => {
         if (response.ok) {
           console.log('Connection successful');
-          window.location.reload();
+          window.location.href = '/signup_login?error=User successfully registered. You can now log in.';
         } else {
           console.error('Error during Signup');
+          window.location.href = '/signup_login?error=This username is already taken. Please try another one.';
         }
       })
       .catch(error => {
         console.error('Error during Signup:', error);
-      })
-      .then(() => {
-        window.location.href = '/account';
+        window.location.href = '/signup_login?error=Error during Signup. Please try again.';
       });
   }
 
@@ -46,23 +45,23 @@ function Signup() {
     <div className='login'>
       <form onSubmit={handleSubmit}>
         <div className='signupusernamebox'>
-        <h3>username</h3>
+          <h3>username</h3>
           <input type="text" id="login" name="login" placeholder="" value={signupData.login} onChange={handleInputChange} required />
         </div>
         <div className='signupnamebox'>
-        <h3>name</h3>
+          <h3>name</h3>
           <input type="text" id="name" name="name" placeholder="" value={signupData.name} onChange={handleInputChange} required />
         </div>
         <div className='signupsurnamebox'>
-        <h3>surname</h3>
+          <h3>surname</h3>
           <input type="text" id="surname" name="surname" placeholder="" value={signupData.surname} onChange={handleInputChange} required />
         </div>
         <div className='signuppasswordbox'>
-        <h3>password</h3>
+          <h3>password</h3>
           <input type="password" id="password" name="password" placeholder="" value={signupData.password} onChange={handleInputChange} required />
         </div>
         <div className='signupbirthdaybox'>
-        <h3>birthdate</h3>
+          <h3>birthdate</h3>
           <input type="date" id="birthdate" name="birthdate" value={signupData.birthdate} onChange={handleInputChange} required />
         </div>
         <div>

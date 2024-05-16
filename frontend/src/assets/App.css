@@ -165,6 +165,7 @@
   align-items: center;
   margin-top: 10px;
 }
+
 .signuppasswordbox {
   display: flex;
   justify-content: center;
@@ -233,7 +234,29 @@
   color: white;
 }
 
-/* My Trips */ 
+.loginsignupPage {
+  background-color: var(--primary-color);
+}
+
+.error {
+  display: none;
+}
+
+.error p {
+  background-color: rgba(255, 255, 255, 0.816);
+  color: black;
+  margin: auto;
+  width: 450px;
+  padding: 10px 0;
+  border: 2px black solid;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-style: italic;
+  text-align: center;
+  display: block;
+}
+
+/* My Trips */
 
 .mytrips {
   text-align: center;
@@ -246,7 +269,7 @@
   color: var(--tertiary-color);
 }
 
-.mytrips ul{
+.mytrips ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -254,7 +277,7 @@
   list-style-type: none;
 }
 
-.mytrips ul li{
+.mytrips ul li {
   width: 300px;
   height: 360px;
   background-color: #FAACA8;
@@ -265,7 +288,7 @@
   border-radius: 15px;
 }
 
-.mytrips ul li span{
+.mytrips ul li span {
   color: var(--tertiary-color);
   border: 1px solid var(--tertiary-color);
   border-radius: 5px;
@@ -303,6 +326,7 @@
   background-color: var(--tertiary-color);
   color: white;
 }
+
 /* HomeOne */
 
 .HomeOne {
@@ -602,7 +626,7 @@
   margin-top: 25px;
 }
 
-.PhotosFourRight{
+.PhotosFourRight {
   margin-top: 150px;
 }
 
@@ -634,7 +658,7 @@
   color: white;
 }
 
-.Contact1 p{
+.Contact1 p {
   width: 90%;
   color: white;
   font-size: 0.9rem;
@@ -647,11 +671,11 @@
   color: white;
 }
 
-.Contact h4{
+.Contact h4 {
   font-weight: bold;
 }
 
-.Contact a{
+.Contact a {
   color: white;
   text-decoration: none;
   display: block;
@@ -776,7 +800,7 @@
   background-color: #e0e0e0;
 }
 
-.possibleroutes ul li p{
+.possibleroutes ul li p {
   text-decoration: none;
   font-size: 1.15rem;
   font-weight: bold;
@@ -794,7 +818,7 @@
   justify-content: space-around;
 }
 
-.stopdetails{
+.stopdetails {
   background-color: #000333;
   color: white;
   width: 400px;
@@ -805,7 +829,7 @@
   margin-top: 10px;
 }
 
-.stopdetails:hover{
+.stopdetails:hover {
   background-color: #65ccc5;
   color: rgb(0, 0, 0);
   width: 400px;
@@ -815,7 +839,7 @@
   padding-top: 50px;
 }
 
-.stopdetails h2{
+.stopdetails h2 {
   padding-bottom: 20px;
 }
 
@@ -901,4 +925,3 @@
   transition: 0.5s;
   border: 2px solid white;
 }
-

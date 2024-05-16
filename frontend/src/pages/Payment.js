@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Loading from '../assets/gif/loading.gif';
+import IsAuthenticated from '../utils/IsAuthenticated';
 
 function Payment() {
   const [loading, setLoading] = useState(true);
+  const isLoggedIn = IsAuthenticated();
 
   useEffect(() => {
     setTimeout(() => {
