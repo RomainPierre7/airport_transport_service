@@ -23,11 +23,11 @@ function Contact() {
         </div>
         <div className='Contact3'>
         <h4>Pages</h4>
-        <a href='Home.js'>Home</a>
-        <a href='Home.js'>About</a>
-        <a href='Home.js'>Reserve</a>
-        <a href='Home.js'>Sign Up</a>
-        <a href='Home.js'>Profile</a>
+        <a href='Home.js'>Payment</a>
+        <a href='Home.js'>Error</a>
+        <a href='Home.js'>Account</a>
+        <a href='Home.js'>Tickets</a>
+        <a href='Home.js'>Contact</a>
         </div>
         <div className='Contact4'>
         <h4>Contact Us</h4>

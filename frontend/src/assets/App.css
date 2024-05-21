@@ -36,6 +36,12 @@
   text-decoration: none;
 }
 
+.Anav .navbar-nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 /* Sign Up, log In */
 
 .loginsignup {
@@ -45,7 +51,6 @@
   padding-top: 100px;
   color: white;
   height: 100vh;
-
 }
 
 .loginbox {
@@ -171,6 +176,137 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+  .loginsignup {
+    display: block;
+  }
+  
+  .loginbox {
+    width: 300px;
+    height: 320px;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    border: 2px #65ccc5 solid;
+    border-radius: 10px;
+    display: inline;
+    margin-top: 100px;
+  }
+  
+  .loginbox h1 {
+    margin-top: 25px;
+  }
+  
+  .signupbox {
+    width: 300px;
+    height: 320px;
+    background-color: black;
+    text-align: center;
+    border: 2px #65ccc5 solid;
+    border-radius: 10px;
+    display: inline;
+  }
+  
+  .signupbox h1 {
+    margin-top: 25px;
+  }
+  
+  .signupbox {
+    width: 470px;
+    height: 520px;
+    background-color: black;
+    text-align: center;
+    border: 2px #65ccc5 solid;
+  }
+  
+  .login {
+    margin-top: 20px;
+  }
+  
+  .login h3 {
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    padding: 11px 20px;
+    border-radius: 5%;
+    margin-right: -10px;
+    z-index: 1;
+    margin-top: 8px;
+    width: 120px;
+  }
+  
+  .loginusernamebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loginpasswordbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .login input {
+    padding: 8px 50px;
+    border-radius: 5px;
+  }
+  
+  .login button {
+    padding: 10px 50px;
+    margin-top: 17px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.3rem;
+  }
+  
+  .login button:hover {
+    padding: 10px 50px;
+    margin-top: 10px;
+    background-color: #65ccc5;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.3rem;
+    transition: 0.5s;
+  }
+  
+  .signupusernamebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signupnamebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .signupsurnamebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .signupbirthdaybox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .signuppasswordbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
 }
 
 /* Account */
@@ -331,9 +467,9 @@
 
 .HomeOne {
   background-color: var(--primary-color);
-  height: 100vh;
   display: flex;
   padding: 2% 5%;
+  padding-bottom: 50px;
 }
 
 .OneLeft {
@@ -419,18 +555,56 @@
   margin-left: 50px;
 }
 
+@media (max-width: 1000px) {
+  .HomeOne {
+    display: block;    
+  }
+
+  .OneLeft {
+    width: 80%;
+    margin: auto;  
+  }
+  
+  .OneLeft h2 {
+    font-size: 4rem;
+    color: var(--tertiary-color);
+  }
+  
+  .OneLeft p {
+    width: 80%;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    margin: 50px auto;
+  }
+  
+  .partnerImg {
+    display: none;
+  }
+
+  .OneLeft h5 {
+    display: none;
+  }
+  
+  .OneRight img {
+    width: 300px;
+    border-radius: 50%;
+    margin-top: 40px;
+  }
+
+}
 /* HomeTWO */
 
 .HomeTwo {
   background-color: var(--secondary-color);
   text-align: center;
   justify-content: center;
-  padding: 2% 5%;
   align-items: center;
 }
 
 .OurServices h3 {
   color: var(--primary-color);
+  margin-top: 50px;
 }
 
 .OurServices h1 {
@@ -445,14 +619,14 @@
   margin: 60px 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .Block1 {
   background-color: var(--tertiary-color);
   color: white;
-  width: 400px;
-  height: 40%;
+  width: 375px;
+  height: 250px;
   border-radius: 30px;
   margin: 25px;
   text-align: left;
@@ -470,8 +644,8 @@
 
 .Block2 {
   background-color: #F4F4F4;
-  width: 400px;
-  height: 40%;
+  width: 375px;
+  height: 250px;
   border-radius: 30px;
   margin: 25px;
   text-align: left;
@@ -489,8 +663,82 @@
 }
 
 .HomeTwo img {
-  width: 65px;
+  width: 100px;
   padding: 35px 25px 0;
+}
+
+@media (max-width: 1000px) {
+  .HomeTwo {
+    background-color: var(--secondary-color);
+    text-align: center;
+    justify-content: center;
+    padding: 2% 5%;
+    align-items: center;
+  }
+  
+  .OurServices h3 {
+    margin-top: 40px;
+    color: var(--primary-color);
+  }
+  
+  .OurServices h1 {
+    margin: 50px auto;
+    width: 80%;
+    font-size: 2.5rem;
+  }
+  
+  .Blocks {
+    text-align: center;
+    margin: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .Block1 {
+    background-color: var(--tertiary-color);
+    color: white;
+    width: 400px;
+    height: 250px;
+    border-radius: 30px;
+    margin: 25px;
+    text-align: left;
+  }
+  
+  .Block1 h2 {
+    padding: 0 25px;
+  }
+  
+  .Block1 p {
+    width: 75%;
+    padding: 0 25px;
+    padding-bottom: 40px;
+  }
+  
+  .Block2 {
+    background-color: #F4F4F4;
+    width: 400px;
+    height: 250px;
+    border-radius: 30px;
+    margin: 25px;
+    text-align: left;
+  }
+  
+  .Block2 h2 {
+    padding: 0 25px;
+  
+  }
+  
+  .Block2 p {
+    width: 75%;
+    padding: 0 25px;
+    padding-bottom: 40px;
+  }
+  
+  .HomeTwo img {
+    width: 100px;
+    padding: 35px 25px 0;
+  }
 }
 
 /* HomeThree */
@@ -535,7 +783,7 @@
 
 .ThreeRight h1 {
   width: 80%;
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 4.5rem;
   margin: 0;
 }
@@ -591,6 +839,66 @@
   cursor: pointer;
 }
 
+@media (max-width: 1000px) {
+
+  .HomeThree {
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    display: block;
+  }
+  
+  .ThreeLeft {
+    width: 95%;
+    padding-top: 50px;
+  }
+  
+  .ThreeLeft img {
+    width: 80%;
+  }
+  
+  .ThreeRight {
+    width: 95%;
+    color: white;
+    text-align: center;
+    margin: 50px auto;
+  }
+  
+  .ThreeRight h1 {
+    width: 90%;
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  
+  .ThreeStatistics {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .ThreeStatistics h2 {
+    color: #65ccc5;
+    margin: 0;
+  }
+  
+  .ThreeStatistics p {
+    margin: 0;
+  }
+  
+  .percent {
+    margin-left: 50px;
+  }
+  
+  .ThreeRight button img {
+    width: 25px;
+    margin-right: 7px;
+  }
+  
+  .ThreeRight button {
+    padding: 2%;
+    margin: 50px auto;
+  }
+}
+
 /* HomeFour */
 
 .HomeFour {
@@ -629,6 +937,43 @@
 
 .PhotosFourRight {
   margin-top: 150px;
+}
+
+@media (max-width: 1000px) {
+  .HomeFour {
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  .HomeFour img {
+    width: 80%;
+    border-radius: 20px;
+  }
+  
+  .TitleFour h1 {
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin: 70px 0 50px;
+  }
+  
+  .PhotosFour {
+    margin: 0 30px;
+    display: block;
+  }
+  
+  .PhotosFour h2 {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .PhotosFour img {
+    width: 80%;
+    margin-top: 25px;
+  }
+  
+  .PhotosFourRight {
+    margin-top: 15px;
+  }
 }
 
 /* Contact */
@@ -711,6 +1056,69 @@
   padding: 12px;
   border-radius: 35%;
   margin: 0 7px;
+}
+
+@media (max-width: 1000px) {
+  
+.Contact {
+  background-color: var(--primary-color);
+  padding: none;
+}
+
+.ContactOne {
+  margin: 35px auto;
+  display: block;
+  text-align: center;
+}
+
+.Contact1 {
+  font-size: 1.5rem;
+  width: 80%;
+  color: white;
+  margin: auto;
+}
+
+.Contact1 p {
+  width: 90%;
+  color: white;
+  font-size: 1rem;
+}
+
+.Contact2 {
+  margin-top: 10px;
+  width: 90%;
+  color: white;
+  margin-top: 20px;
+}
+
+.Contact3 {
+  display: none;
+}
+
+.Contact4 {
+  margin-top: 20px;
+  width: 90%;
+}
+
+.ContactTwo {
+  padding: none;
+  display: block; 
+  margin-top: 25px;
+  text-align: center;
+}
+
+.footerfour {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+}
+
+.footerfour img {
+  width: 50px;
+  background-color: white;
+  padding: none;
+  margin: none;
+}
 }
 
 /* Reserve */
