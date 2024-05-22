@@ -12,7 +12,7 @@ function Payment() {
       setTimeout(() => {
         window.location.href = '/account';
       }, 3000);
-    }, 3000);
+    }, 5000);
   }, []);
 
   return (
